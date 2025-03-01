@@ -29,3 +29,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Code quality
 
+### Lai Yong Rong
+
+<img src="images/whyare.png" width="200px">
+
+[[homepage](http://www.comp.nus.edu.sg/~laiyr)]
+[[github](https://github.com/WhyAre)]
+
+* Role: Developer
+* Responsibilities: Integration
