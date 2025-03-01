@@ -38,3 +38,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Integration
+
+### Nguyen Vu Khang
+
+<img src="images/nguyenvukhang.png" width="200px">
+
+[[website](https://www.nguyenvukhang.com)]
+[[github](https://github.com/nguyenvukhang)]
+
+* Role: Developer
+* Responsibilities: Git expert
