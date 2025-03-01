@@ -29,3 +29,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Code quality
 
+### Amanda Quek Yan Ling
+
+<img src="images/victoria281.png" width="200px">
+
+[[github](https://github.com/Victoria281)]
+[[homepage](https://nus-csm.symplicity.com/profiles/amanda.quek)]
+[[portfolio](team/victoria281.md)]
+
+* Role: Developer
+* Responsibilities: Documentation
