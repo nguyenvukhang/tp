@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/meloppeitreet.md)]
 
 * Role: Developer
-* Responsibilities: Testing 
+* Responsibilities: Testing
 
 ### Chong Kok Seen
 
@@ -59,3 +59,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Git expert
+
+### Chng Wei Cheng
+
+<img src="images/anafterthought.png" width="200px">
+
+[[homepage](http://www.comp.nus.edu.sg/~cwc099)]
+[[github](https://github.com/AnAfterthought)]
+[[portfolio](team/anafterthought.md)]
+
+* Role: Developer
+* Responsibilities: Deliverables and deadlines
+
