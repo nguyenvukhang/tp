@@ -275,53 +275,186 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a &hellip; | I want to &hellip;                                                | So that I can &hellip;                                                                  |
+| -------- | ------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `* * *`  | TA            | save a students data                                              | find their details to contact them if needed                                            |
+| `* * *`  | TA            | view a list of all students                                       | see all students I have created                                                         |
+| `* *`    | TA            | search for contacts using name, student ID, or email              | locate students efficiently                                                             |
+| `* *`    | TA            | add notes to each contact                                         | track important details like consultation requests, special accommodations and weakness |
+| `* *`    | TA            | view the student's data in tabular form                           | see how the class in doing in general                                                   |
+| `* *`    | TA            | access the contact details of my students                         | message them                                                                            |
+| `* * *`  | TA            | create tutorial slots                                             | manage the lesson format for the students                                               |
+| `* * *`  | TA            | add students to groups                                            | manage them on a group level                                                            |
+| `* * *`  | TA            | create an assignment entry with a deadline                        | track student submissions                                                               |
+| `* *`    | TA            | track whether a student has submitted an assignment               | monitor completion rates                                                                |
+| `* *`    | TA            | see submission rates                                              | assess overall assignment difficulty                                                    |
+| `* *`    | TA            | mark my student as present/unpresent for a specific tutorial slot | track their attendence                                                                  |
+| `* *`    | TA            | view the overall performance of my students                       | identify if my class is performing well overall                                         |
+| `* * *`  | TA            | delete tutorial groups                                            | remove outdated groups                                                                  |
+| `* * *`  | TA            | delete a student's data                                           | make space for the next semester's class                                                |
 
 ### Use cases
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+#### Use case: Create a student
 
-**MSS**
+**Main Success Scenario (MSS)**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
-    Use case ends.
+1. User sends request to System to create student
+2. System creates a new user
+3. Use case ends
 
 **Extensions**
 
-* 2a. The list is empty.
+- If input is erroneous
+  - System displays an error message
+  - Use case resumes at step 1
 
-  Use case ends.
+#### Use case: Delete a student
 
-* 3a. The given index is invalid.
+**MSS**
 
-    * 3a1. AddressBook shows an error message.
+1. User requests to list persons
+2. System shows a list of persons
+3. User requests to delete a specific person in the list
+4. System deletes the person
+5. Use case ends.
 
-      Use case resumes at step 2.
+**Extensions**
 
-*{More to be added}*
+- The given index is invalid.
+  - System shows an error message.
+  - Use case resumes at step 1.
+
+#### Use case: List students
+
+**MSS**
+
+1. User requests to list students
+2. System lists all students
+3. Use case ends
+
+**Extensions**
+
+- If there are no students
+  - System doesn't display anything
+  - Use case ends
+
+#### Use case: List tutorial slots
+
+**MSS**
+
+1. User requests to list tutorial slots
+2. System lists all tutorial slots
+3. Use case ends
+
+**Extensions**
+
+- If there are no tutorial slots
+  - System doesn't display anything
+  - Use case ends
+
+#### Use case: Create a tutorial slot
+
+**MSS**
+
+1. User requests to create tutorial slot
+2. System creates a new tutorial slot
+3. Use case ends
+
+**Extensions**
+
+- If tutorial slot already exists
+  - System shows an error message
+  - Use case continues at step 1
+- If tutorial slot name is invalid
+  - System shows an error message
+  - Use case continues at step 1
+
+#### Use case: Delete a tutorial slot
+
+**MSS**
+
+1. User requests to delete tutorial slot
+2. System deletes specified tutorial slot
+3. Use case ends
+
+**Extensions**
+
+- If specified tutorial slot doesn't exist
+  - System shows an error message
+  - Use case ends
+- If tutorial slot name is invalid
+  - System shows an error message
+  - Use case continues at step 1
+
+#### Use case: Add student to tutorial slot
+
+**MSS**
+
+1. User lists all students
+2. System lists all students
+3. User sends the command to add students to tutorial slots
+4. System adds the students to the respective tutorial slots
+5. Use case ends
+
+**Extensions**
+
+- If user doesn't list students first,
+  - System shows error message
+  - Use case continues at step 1
+- If user inputs invalid information
+  - System shows error message
+  - Use case continues at step 1
+
+
+#### Use case: Delete student from tutorial slot
+
+**MSS**
+
+1. User lists all students
+2. System lists all students
+3. User sends the command to delete students to tutorial slots
+4. System deletes the students to the respective tutorial slots
+5. Use case ends
+
+**Extensions**
+
+- If user doesn't exist
+  - System shows error message
+  - Use case ends
+- If user doesn't list students first,
+  - System shows error message
+  - Use case continues at step 1
+- If user inputs invalid information
+  - System shows error message
+  - Use case continues at step 1
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+1.  The system should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2.  The system should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
+4.  The system should respond within 2 seconds.
+5.  The system should only be for a single user.
+6.  The system's data should be stored locally.
+7.  The system should work without requiring an installer.
+8.  The system should not require a remote server.
+9.  The system's GUI should work well for standard screen resolutions 1920x1080 and higher.
+10. The system should be easy to use for a user who has no experience using an address book software.
+11. The system should not interfere with other software.
+12. The system should save data automatically after each modification in the address book.
+13. The system's saved data should still be accessible even if it crashes.
+14. The system should not require a database management system for storing data.
+15. The system should be able to handle invalid commands without crashing.
+16. The system's features should be easy to test.
+17. The system's commands should not cause confusion (i.e. not ambiguous).
+18. The system should be at most 100MB in size.
+19. The system should only require one JAR file.
+20. A user who has not used the software for a while should be able to use it efficiently immediately after returning to it.
+21. The User Guide and Developer Guide should be PDF-friendly.
+22. The system should be able to read a save file provided it is in the correct path and has the correct name.
 
 ### Glossary
 
