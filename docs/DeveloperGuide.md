@@ -275,16 +275,23 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
-*{More to be added}*
+| Priority | As a &hellip; | I want to &hellip;                                                | So that I can &hellip;                                                                  |
+| -------- | ------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `* * *`  | TA            | save a students data                                              | find their details to contact them if needed                                            |
+| `* * *`  | TA            | view a list of all students                                       | see all students I have created                                                         |
+| `* *`    | TA            | search for contacts using name, student ID, or email              | locate students efficiently                                                             |
+| `* *`    | TA            | add notes to each contact                                         | track important details like consultation requests, special accommodations and weakness |
+| `* *`    | TA            | view the student's data in tabular form                           | see how the class in doing in general                                                   |
+| `* *`    | TA            | access the contact details of my students                         | message them                                                                            |
+| `* * *`  | TA            | create tutorial slots                                             | manage the lesson format for the students                                               |
+| `* * *`  | TA            | add students to groups                                            | manage them on a group level                                                            |
+| `* * *`  | TA            | create an assignment entry with a deadline                        | track student submissions                                                               |
+| `* *`    | TA            | track whether a student has submitted an assignment               | monitor completion rates                                                                |
+| `* *`    | TA            | see submission rates                                              | assess overall assignment difficulty                                                    |
+| `* *`    | TA            | mark my student as present/unpresent for a specific tutorial slot | track their attendence                                                                  |
+| `* *`    | TA            | view the overall performance of my students                       | identify if my class is performing well overall                                         |
+| `* * *`  | TA            | delete tutorial groups                                            | remove outdated groups                                                                  |
+| `* * *`  | TA            | delete a student's data                                           | make space for the next semester's class                                                |
 
 ### Use cases
 
