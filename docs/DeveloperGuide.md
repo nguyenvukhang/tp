@@ -279,17 +279,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | -------- | ------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `* * *`  | TA            | save a students data                                              | find their details to contact them if needed                                            |
 | `* * *`  | TA            | view a list of all students                                       | see all students I have created                                                         |
-| `* *`    | TA            | search for contacts using name, student ID, or email              | locate students efficiently.                                                            |
+| `* *`    | TA            | search for contacts using name, student ID, or email              | locate students efficiently                                                             |
 | `* *`    | TA            | add notes to each contact                                         | track important details like consultation requests, special accommodations and weakness |
-| `* *`    | TA            | view the student's data in tabular form                           | see how the class in doing in general.                                                  |
+| `* *`    | TA            | view the student's data in tabular form                           | see how the class in doing in general                                                   |
 | `* *`    | TA            | access the contact details of my students                         | message them                                                                            |
 | `* * *`  | TA            | create tutorial slots                                             | manage the lesson format for the students                                               |
 | `* * *`  | TA            | add students to groups                                            | manage them on a group level                                                            |
 | `* * *`  | TA            | create an assignment entry with a deadline                        | track student submissions                                                               |
-| `* *`    | TA            | track whether a student has submitted an assignment               | monitor completion rates.                                                               |
-| `* *`    | TA            | see submission rates                                              | assess overall assignment difficulty.                                                   |
+| `* *`    | TA            | track whether a student has submitted an assignment               | monitor completion rates                                                                |
+| `* *`    | TA            | see submission rates                                              | assess overall assignment difficulty                                                    |
 | `* *`    | TA            | mark my student as present/unpresent for a specific tutorial slot | track their attendence                                                                  |
-| `* *`    | TA            | view the overall performance of my students                       | identify if my class is performing well overall.                                        |
+| `* *`    | TA            | view the overall performance of my students                       | identify if my class is performing well overall                                         |
 | `* * *`  | TA            | delete tutorial groups                                            | remove outdated groups                                                                  |
 | `* * *`  | TA            | delete a student's data                                           | make space for the next semester's class                                                |
 
