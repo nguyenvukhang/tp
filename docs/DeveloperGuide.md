@@ -464,8 +464,39 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+#### A
+* **Address Book**: The system that manages student contacts and administrative tasks for TAs.
+* **Assignment Entry**: A record representing an assignment with an associated deadline.
+#### C
+* **CLI (Command-Line Interface)**: A text-based interface that allows users to interact with the system via commands.
+* **Command**: A specific instruction given by the user in the CLI to perform an action.
+* **Contact Details**: Information related to a student such as name, student ID, email, and notes.
+#### D
+* **Deadline**: The due date associated with an assignment entry.
+* **Desktop Application**: A software application designed to run on a computer rather than a web browser or mobile device.
+#### E
+* **Error Message**: A notification displayed when a user inputs invalid or incorrect data.
+#### G
+* **GUI (Graphical User Interface)**: A visual interface allowing users to interact with the system using a mouse, windows, and icons. Not preferred by the target user.
+* **Group**: A collection of students managed together, typically for tutorial purposes.
+#### I
+* **Invalid Command**: A user-entered command that TAskbook does not recognize or process correctly.
+#### L
+* **Local Storage**: The method by which TAskbook saves and retrieves data on the user's device rather than using a remote server.
+#### M
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
+#### N
+* **Notes**: Additional information that a TA can attach to a student’s record.
+#### P
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+#### S
+* **Save File**: A file containing stored student data that TAskbook can read and write to.
+* **Student**: An entity in TAskbook representing an individual that a TA manages.
+* **Student ID**: A unique identifier assigned to each student by the school / institution.
+#### T
+* **TA (Teaching Assistant)**: The primary user of TAskbook, responsible for managing student contacts and administrative tasks.
+* **Tabular Format**: A structured way of displaying student data in rows and columns.
+* **Tutorial Slot**: A scheduled session that students can be assigned to and managed by the TA.
 
 --------------------------------------------------------------------------------------------------------------------
 
