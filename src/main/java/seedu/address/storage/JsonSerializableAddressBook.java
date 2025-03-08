@@ -20,6 +20,7 @@ import seedu.address.model.person.Person;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    public static final String MESSAGE_DUPLICATE_TUTORIAL = "Tutorials list contains duplicate tutorial(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedTutorial> tutorials = new ArrayList<>();
@@ -70,7 +71,7 @@ class JsonSerializableAddressBook {
         for (var tutorial : tutorials) {
             var t = tutorial.toModelType();
             if (addressBook.hasTutorial(t)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_TUTORIAL);
             }
             addressBook.addTutorial(t);
         }
