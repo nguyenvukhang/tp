@@ -100,6 +100,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     //// Tutorial operations
+
+    /**
+     * Adds a tutorial slot
+     */
     public void addTutorial(Tutorial tutorial) {
         tutorials.add(tutorial);
     }
