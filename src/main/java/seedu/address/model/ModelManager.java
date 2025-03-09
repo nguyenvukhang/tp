@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Person;
+import seedu.address.model.tutorial.Tutorial;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -113,8 +114,17 @@ public class ModelManager implements Model {
         addressBook.setPerson(target, editedPerson);
     }
 
-    // =========== Filtered Person List Accessors
-    // =============================================================
+    @Override
+    public void addTutorial(Tutorial t) {
+        addressBook.addTutorial(t);
+    }
+
+    @Override
+    public boolean hasTutorial(Tutorial t) {
+        return addressBook.hasTutorial(t);
+    }
+
+    //=========== Filtered Person List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the
