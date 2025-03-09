@@ -44,4 +44,14 @@ public class JsonSerializableAddressBookTest {
                 dataFromFile::toModelType);
     }
 
+    @Test
+    public void toModelType_inclTutorials_success() throws Exception {
+        final Path filename = TEST_DATA_FOLDER.resolve("typicalPersonsInclTutorials.json");
+        var dataFromFile = JsonUtil.readJsonFile(filename, JsonSerializableAddressBook.class).orElseThrow();
+        var modelType = dataFromFile.toModelType();
+
+        AddressBook typicalPersonsAddressBook = TypicalPersons.getTypicalAddressBookInclTutorials();
+        assertEquals(modelType, typicalPersonsAddressBook);
+    }
+
 }
