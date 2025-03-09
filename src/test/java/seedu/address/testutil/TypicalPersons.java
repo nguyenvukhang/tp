@@ -90,6 +90,6 @@ public class TypicalPersons {
     }
 
     public static List<Tutorial> getTypicalTutorials() {
-        return List.of(new Tutorial("CS2040S T58"), new Tutorial("CS1010 B06"));
+        return List.of(new Tutorial("Tutorial_1"), new Tutorial("Tutorial-2"));
     }
 }
