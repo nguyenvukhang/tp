@@ -4,6 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'application'
     id 'jacoco'
+    id 'com.diffplug.spotless' version '7.0.2'
 }
 
 mainClassName = 'seedu.address.Main'
@@ -70,3 +71,20 @@ shadowJar {
 }
 
 defaultTasks 'clean', 'test'
+
+spotless {
+    format 'misc', {
+        target '*.gradle', '.gitattributes', '.gitignore' // define the files to apply `misc` to
+
+        trimTrailingWhitespace()
+        leadingTabsToSpaces()
+        endWithNewline()
+    }
+    java {
+        eclipse().configFile('config/checkstyle/eclipse.xml')
+        trimTrailingWhitespace()
+
+        importOrder('\\#', 'java.', 'javax.', 'org.', 'com.')
+        removeUnusedImports()
+    }
+}
