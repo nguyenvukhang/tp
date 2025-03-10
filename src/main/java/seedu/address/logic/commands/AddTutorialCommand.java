@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.tutorial.Tutorial;
 
 /**
- * Adds a person to the address book.
+ * Adds a tutorial to the address book.
  */
 public class AddTutorialCommand extends Command {
 
@@ -24,7 +24,7 @@ public class AddTutorialCommand extends Command {
     private final Tutorial toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an {@link AddTutorialCommand} to add the specified {@code Tutorial}
      */
     public AddTutorialCommand(Tutorial tutorial) {
         requireNonNull(tutorial);
