@@ -117,6 +117,7 @@ public class AddressBookParserTest {
         var invalidTutName = "Tutorial-_%-Name";
         var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, invalidTutName);
 
-        assertThrows(ParseException.class, () -> parser.parseCommand(cmd));
+        assertThrows(ParseException.class, (
+        ) -> parser.parseCommand(cmd));
     }
 }

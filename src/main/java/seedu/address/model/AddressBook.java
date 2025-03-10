@@ -27,8 +27,8 @@ public class AddressBook implements ReadOnlyAddressBook {
      * sometimes used to avoid duplication between constructors. See
      * https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
-     * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+     * Note that non-static init blocks are not recommended to use. There are other
+     * ways to avoid duplication among constructors.
      */
     {
         persons = new UniquePersonList();

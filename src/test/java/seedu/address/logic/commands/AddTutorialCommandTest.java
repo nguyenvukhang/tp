@@ -16,11 +16,12 @@ import seedu.address.testutil.TypicalPersons;
 public class AddTutorialCommandTest {
 
     private static final Model modelStub = new ModelManager(TypicalPersons.getTypicalAddressBookInclTutorials(),
-            new UserPrefs());
+                    new UserPrefs());
 
     @Test
     public void constructor_nullTutorial_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddTutorialCommand(null));
+        assertThrows(NullPointerException.class, (
+        ) -> new AddTutorialCommand(null));
     }
 
     @Test
@@ -29,8 +30,7 @@ public class AddTutorialCommandTest {
         CommandResult commandResult = new AddTutorialCommand(t).execute(modelStub);
         var tutorials = modelStub.getAddressBook().getTutorialList();
 
-        assertEquals(AddTutorialCommand.MESSAGE_SUCCESS.formatted(t),
-                commandResult.getFeedbackToUser());
+        assertEquals(AddTutorialCommand.MESSAGE_SUCCESS.formatted(t), commandResult.getFeedbackToUser());
         assertTrue(tutorials.contains(t));
     }
 
@@ -38,7 +38,7 @@ public class AddTutorialCommandTest {
     public void execute_duplicatePerson_throwsCommandException() {
         var cmd = new AddTutorialCommand(new Tutorial("Tutorial_1"));
 
-        assertThrows(CommandException.class,
-                AddTutorialCommand.MESSAGE_DUPLICATE_TUTORIAL, () -> cmd.execute(modelStub));
+        assertThrows(CommandException.class, AddTutorialCommand.MESSAGE_DUPLICATE_TUTORIAL, (
+        ) -> cmd.execute(modelStub));
     }
 }

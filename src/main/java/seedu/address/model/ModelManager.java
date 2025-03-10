@@ -124,7 +124,8 @@ public class ModelManager implements Model {
         return addressBook.hasTutorial(t);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    // =========== Filtered Person List Accessors
+    // =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the
