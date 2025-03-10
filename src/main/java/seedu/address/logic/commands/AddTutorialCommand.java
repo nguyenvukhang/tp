@@ -40,7 +40,7 @@ public class AddTutorialCommand extends Command {
         }
 
         model.addTutorial(toAdd);
-        return new CommandResult(MESSAGE_SUCCESS.formatted(toAdd));
+        return new CommandResult(MESSAGE_SUCCESS.formatted(toAdd), true);
     }
 
     @Override
