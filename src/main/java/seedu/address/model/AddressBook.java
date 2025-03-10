@@ -119,7 +119,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Checks whether tutorial exists in the address book
+     * Replaces the contents of the tutorial list with {@code tutorials}.
+     * {@code tutorials} must not contain duplicate tutorials.
      */
     public void setTutorials(List<Tutorial> tutorials) {
         requireNonNull(tutorials);
