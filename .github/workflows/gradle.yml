@@ -36,12 +36,6 @@ jobs:
           java-version: '17'
           java-package: jdk+fx
 
-      - name: Gradle Primer
-        run: ./gradlew
-
-      - name: Check formatting with Gradle
-        run: ./gradlew spotlessCheck
-
       - name: Build and check with Gradle
         run: ./gradlew check coverage
 
