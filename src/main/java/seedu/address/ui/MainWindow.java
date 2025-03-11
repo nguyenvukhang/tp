@@ -1,14 +1,18 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_NAVIGATION_MODE;
+
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -16,6 +20,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.NavigationMode;
 
 /**
  * The Main Window. Provides the basic application layout containing a menu bar
@@ -32,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
+    private TutorialListPanel tutorialListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -42,7 +48,16 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
+    private VBox personList;
+
+    @FXML
+    private VBox tutorialList;
+
+    @FXML
     private StackPane personListPanelPlaceholder;
+
+    @FXML
+    private StackPane tutorialListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -115,6 +130,9 @@ public class MainWindow extends UiPart<Stage> {
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
         personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
+        tutorialListPanel = new TutorialListPanel(logic.getFilteredTutorialList());
+        tutorialListPanelPlaceholder.getChildren().add(tutorialListPanel.getRoot());
+
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
@@ -134,6 +152,38 @@ public class MainWindow extends UiPart<Stage> {
         if (guiSettings.getWindowCoordinates() != null) {
             primaryStage.setX(guiSettings.getWindowCoordinates().getX());
             primaryStage.setY(guiSettings.getWindowCoordinates().getY());
+        }
+    }
+
+    /**
+     * Sets the visibility and manageability of the specified UI element.
+     */
+    private void setElementVisibility(Node element, boolean isVisible) {
+        element.setVisible(isVisible);
+        element.setManaged(isVisible);
+    }
+
+    /**
+     * Sets the visibility of the person and tutorial list UI elements according to
+     * the specified navigation mode.
+     */
+    private void handleMode(NavigationMode mode) {
+        switch (mode) {
+        case PERSON:
+            setElementVisibility(personList, true);
+            setElementVisibility(tutorialList, false);
+            break;
+
+        case TUTORIAL:
+            setElementVisibility(personList, false);
+            setElementVisibility(tutorialList, true);
+            break;
+
+        case UNCHANGED:
+            break;
+
+        default:
+            throw new IllegalArgumentException(MESSAGE_INVALID_NAVIGATION_MODE);
         }
     }
 
@@ -179,6 +229,8 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
+
+            handleMode(commandResult.getResultingMode());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
