@@ -1,5 +1,7 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_NAVIGATION_MODE;
+
 import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.NavigationMode;
 
 /**
  * The Main Window. Provides the basic application layout containing a menu bar
@@ -162,11 +165,23 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the visibility of the person and tutorial list UI elements according to
-     * the specified mode.
+     * the specified navigation mode.
      */
-    private void handleMode(boolean isTutorialMode) {
-        setElementVisibility(tutorialList, isTutorialMode);
-        setElementVisibility(personList, !isTutorialMode);
+    private void handleMode(NavigationMode mode) {
+        switch (mode) {
+        case PERSON:
+            setElementVisibility(personList, true);
+            setElementVisibility(tutorialList, false);
+            break;
+
+        case TUTORIAL:
+            setElementVisibility(personList, false);
+            setElementVisibility(tutorialList, true);
+            break;
+
+        default:
+            throw new IllegalArgumentException(MESSAGE_INVALID_NAVIGATION_MODE);
+        }
     }
 
     /**
@@ -212,7 +227,7 @@ public class MainWindow extends UiPart<Stage> {
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
-            handleMode(commandResult.isTutorialMode());
+            handleMode(commandResult.getResultingMode());
 
             if (commandResult.isShowHelp()) {
                 handleHelp();
