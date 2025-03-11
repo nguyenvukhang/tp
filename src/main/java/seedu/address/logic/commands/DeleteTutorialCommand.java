@@ -9,7 +9,7 @@ import seedu.address.model.NavigationMode;
 import seedu.address.model.tutorial.Tutorial;
 
 /**
- * Deletes a tutorial to the address book.
+ * Deletes a tutorial from the address book.
  */
 public class DeleteTutorialCommand extends Command {
 
@@ -25,7 +25,7 @@ public class DeleteTutorialCommand extends Command {
     private final Tutorial toDelete;
 
     /**
-     * Creates a {@link DeleteTutorialCommand} to add the specified {@code Tutorial}
+     * Creates a {@link DeleteTutorialCommand} to delete the specified {@code Tutorial}
      */
     public DeleteTutorialCommand(Tutorial tutorial) {
         requireNonNull(tutorial);

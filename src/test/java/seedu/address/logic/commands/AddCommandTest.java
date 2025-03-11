@@ -158,7 +158,7 @@ public class AddCommandTest {
 
         @Override
         public void deleteTutorial(Tutorial tutorial) {
-            throw new AssertionError("This method should not be called");
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
