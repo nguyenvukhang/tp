@@ -14,14 +14,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class ListTutorialCommandParser implements Parser<ListTutorialCommand> {
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values
-     * in the given {@code ArgumentMultimap}.
-     */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-
-    /**
      * Parses the given {@code String} of arguments in the context of the
      * ListTutorialCommand and returns an ListTutorialCommand object for execution.
      *
