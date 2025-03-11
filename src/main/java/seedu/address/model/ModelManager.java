@@ -123,6 +123,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteTutorial(Tutorial t) {
+        addressBook.deleteTutorial(t);
+    }
+
+    @Override
     public boolean hasTutorial(Tutorial t) {
         return addressBook.hasTutorial(t);
     }

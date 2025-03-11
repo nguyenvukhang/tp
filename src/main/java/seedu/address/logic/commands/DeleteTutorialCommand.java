@@ -34,6 +34,12 @@ public class DeleteTutorialCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (!model.hasTutorial(toDelete)) {
+            throw new CommandException(MESSAGE_TUTORIAL_DOES_NOT_EXIST.formatted(toDelete));
+        }
+
+        model.deleteTutorial(toDelete);
         return new CommandResult(MESSAGE_SUCCESS.formatted(toDelete));
     }
 
