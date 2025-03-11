@@ -17,6 +17,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddTutorialCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteTutorialCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
@@ -124,6 +125,25 @@ public class AddressBookParserTest {
     public void parseCommand_tutorialAddCommand_invalidName() {
         var invalidTutName = "Tutorial-_%-Name";
         var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, invalidTutName);
+
+        assertThrows(ParseException.class, (
+        ) -> parser.parseCommand(cmd));
+    }
+
+    @Test
+    public void parseCommand_tutorialDeleteCommand_success() throws ParseException {
+        var tutorialName = "Tutorial-_-Name1";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, DeleteTutorialCommand.COMMAND_WORD, tutorialName);
+
+        var actual = parser.parseCommand(cmd);
+        assertTrue(actual instanceof DeleteTutorialCommand);
+    }
+
+    @Test
+    public void parseCommand_tutorialDeleteCommand_invalidName() {
+        var invalidTutName = "Tutorial-_%-Name";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, DeleteTutorialCommand.COMMAND_WORD,
+                        invalidTutName);
 
         assertThrows(ParseException.class, (
         ) -> parser.parseCommand(cmd));
