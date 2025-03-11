@@ -87,6 +87,11 @@ public interface Model {
     void addTutorial(Tutorial tutorial);
 
     /**
+     * Deletes a tutorial slot
+     */
+    void deleteTutorial(Tutorial tutorial);
+
+    /**
      * Checks whether tutorial exists in the address book
      */
     boolean hasTutorial(Tutorial tutorial);
