@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -152,21 +153,20 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sets the visibility and manageability of the specified UI element.
+     */
+    private void setElementVisibility(Node element, boolean isVisible) {
+        element.setVisible(isVisible);
+        element.setManaged(isVisible);
+    }
+
+    /**
      * Sets the visibility of the person and tutorial list UI elements according to
      * the specified mode.
      */
     private void handleMode(boolean isTutorialMode) {
-        if (isTutorialMode) {
-            tutorialList.setVisible(true);
-            tutorialList.setManaged(true);
-            personList.setVisible(false);
-            personList.setManaged(false);
-        } else {
-            tutorialList.setVisible(false);
-            tutorialList.setManaged(false);
-            personList.setVisible(true);
-            personList.setManaged(true);
-        }
+        setElementVisibility(tutorialList, isTutorialMode);
+        setElementVisibility(personList, !isTutorialMode);
     }
 
     /**
