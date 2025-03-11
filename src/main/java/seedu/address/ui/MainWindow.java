@@ -179,6 +179,9 @@ public class MainWindow extends UiPart<Stage> {
             setElementVisibility(tutorialList, true);
             break;
 
+        case UNCHANGED:
+            break;
+
         default:
             throw new IllegalArgumentException(MESSAGE_INVALID_NAVIGATION_MODE);
         }

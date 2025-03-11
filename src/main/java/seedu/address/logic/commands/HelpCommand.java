@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import seedu.address.model.Model;
+import seedu.address.model.NavigationMode;
 
 /**
  * Format full help instructions for every command for display.
@@ -16,6 +17,6 @@ public class HelpCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) {
-        return new CommandResult(SHOWING_HELP_MESSAGE, CommandResult.DEFAULT_RESULTING_MODE, true, false);
+        return new CommandResult(SHOWING_HELP_MESSAGE, NavigationMode.UNCHANGED, true, false);
     }
 }
