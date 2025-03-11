@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
+import seedu.address.model.NavigationMode;
 import seedu.address.model.UserPrefs;
 
 /**
@@ -27,7 +28,7 @@ public class ListTutorialCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListTutorialCommand(), model, ListTutorialCommand.MESSAGE_SUCCESS, true,
-                        expectedModel);
+        assertCommandSuccess(new ListTutorialCommand(), model, ListTutorialCommand.MESSAGE_SUCCESS,
+                        NavigationMode.TUTORIAL, expectedModel);
     }
 }

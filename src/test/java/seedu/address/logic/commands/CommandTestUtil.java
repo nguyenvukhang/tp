@@ -17,6 +17,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.NavigationMode;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -88,12 +89,11 @@ public class CommandTestUtil {
     /**
      * Convenience wrapper to
      * {@link #assertCommandSuccess(Command, Model, CommandResult, Model)} that
-     * takes a string {@code expectedMessage} and boolean
-     * {@code expectedIsTutorialMode}.
+     * takes a string {@code expectedMessage} and {@code expectedNavigationMode}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-                    boolean expectedIsTutorialMode, Model expectedModel) {
-        CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedIsTutorialMode);
+                    NavigationMode expectedNavigationMode, Model expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, expectedNavigationMode);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 
