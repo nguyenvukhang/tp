@@ -11,7 +11,8 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for ListTutorialCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for
+ * ListTutorialCommand.
  */
 public class ListTutorialCommandTest {
 
@@ -26,7 +27,7 @@ public class ListTutorialCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListTutorialCommand(), model, ListTutorialCommand.MESSAGE_SUCCESS,
-                true, expectedModel);
+        assertCommandSuccess(new ListTutorialCommand(), model, ListTutorialCommand.MESSAGE_SUCCESS, true,
+                        expectedModel);
     }
 }

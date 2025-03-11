@@ -41,8 +41,8 @@ public class CommandResult {
     }
 
     /**
-     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser} and {@code isTutorialMode},
-     * and other fields set to their default value.
+     * Constructs a {@code CommandResult} with the specified {@code feedbackToUser}
+     * and {@code isTutorialMode}, and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser, boolean isTutorialMode) {
         this(feedbackToUser, isTutorialMode, false, false);
@@ -77,9 +77,8 @@ public class CommandResult {
 
         CommandResult otherCommandResult = (CommandResult) other;
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
-                && isTutorialMode == otherCommandResult.isTutorialMode
-                && showHelp == otherCommandResult.showHelp
-                && exit == otherCommandResult.exit;
+                        && isTutorialMode == otherCommandResult.isTutorialMode
+                        && showHelp == otherCommandResult.showHelp && exit == otherCommandResult.exit;
     }
 
     @Override
@@ -89,12 +88,8 @@ public class CommandResult {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .add("feedbackToUser", feedbackToUser)
-                .add("isTutorialMode", isTutorialMode)
-                .add("showHelp", showHelp)
-                .add("exit", exit)
-                .toString();
+        return new ToStringBuilder(this).add("feedbackToUser", feedbackToUser).add("isTutorialMode", isTutorialMode)
+                        .add("showHelp", showHelp).add("exit", exit).toString();
     }
 
 }

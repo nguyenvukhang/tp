@@ -152,7 +152,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Sets the visibility of the person and tutorial list UI elements according to the specified mode.
+     * Sets the visibility of the person and tutorial list UI elements according to
+     * the specified mode.
      */
     private void handleMode(boolean isTutorialMode) {
         if (isTutorialMode) {

@@ -30,7 +30,8 @@ public class TutorialListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Tutorial} using a {@code TutorialCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Tutorial}
+     * using a {@code TutorialCard}.
      */
     class TutorialListViewCell extends ListCell<Tutorial> {
         @Override

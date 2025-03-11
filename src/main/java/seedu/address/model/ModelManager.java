@@ -145,11 +145,12 @@ public class ModelManager implements Model {
         filteredPersons.setPredicate(predicate);
     }
 
-    //=========== Filtered Tutorial List Accessors =============================================================
+    // =========== Filtered Tutorial List Accessors
+    // =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Tutorial} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Tutorial} backed by the
+     * internal list of {@code versionedAddressBook}
      */
     @Override
     public ObservableList<Tutorial> getFilteredTutorialList() {
@@ -163,7 +164,6 @@ public class ModelManager implements Model {
         filteredTutorials.setPredicate(predicate);
     }
 
-
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -176,10 +176,9 @@ public class ModelManager implements Model {
         }
 
         ModelManager otherModelManager = (ModelManager) other;
-        return addressBook.equals(otherModelManager.addressBook)
-                && userPrefs.equals(otherModelManager.userPrefs)
-                && filteredPersons.equals(otherModelManager.filteredPersons)
-                && filteredTutorials.equals(otherModelManager.filteredTutorials);
+        return addressBook.equals(otherModelManager.addressBook) && userPrefs.equals(otherModelManager.userPrefs)
+                        && filteredPersons.equals(otherModelManager.filteredPersons)
+                        && filteredTutorials.equals(otherModelManager.filteredTutorials);
     }
 
 }
