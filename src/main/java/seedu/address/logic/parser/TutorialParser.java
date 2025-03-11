@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import seedu.address.logic.commands.AddTutorialCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteTutorialCommand;
 import seedu.address.logic.commands.ListTutorialCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -21,6 +22,7 @@ public class TutorialParser implements Parser<Command> {
         subcmds = new HashMap<>();
         subcmds.put(AddTutorialCommand.COMMAND_WORD, new AddTutorialCommandParser());
         subcmds.put(ListTutorialCommand.COMMAND_WORD, new ListTutorialCommandParser());
+        subcmds.put(DeleteTutorialCommand.COMMAND_WORD, new DeleteTutorialCommandParser());
     }
 
     @Override
