@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTutorialCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
@@ -22,6 +23,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.TutorialCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -99,5 +101,23 @@ public class AddressBookParserTest {
     public void parseCommand_unknownCommand_throwsParseException() {
         assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, (
         ) -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseCommand_tutorialAddCommand_success() throws ParseException {
+        var tutorialName = "Tutorial-_-Name1";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, tutorialName);
+
+        var actual = parser.parseCommand(cmd);
+        assertTrue(actual instanceof AddTutorialCommand);
+    }
+
+    @Test
+    public void parseCommand_tutorialAddCommand_invalidName() {
+        var invalidTutName = "Tutorial-_%-Name";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, invalidTutName);
+
+        assertThrows(ParseException.class, (
+        ) -> parser.parseCommand(cmd));
     }
 }

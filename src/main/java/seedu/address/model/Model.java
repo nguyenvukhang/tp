@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Person;
+import seedu.address.model.tutorial.Tutorial;
 
 /**
  * The API of the Model component.
@@ -76,6 +77,16 @@ public interface Model {
      * address book.
      */
     void setPerson(Person target, Person editedPerson);
+
+    /**
+     * Adds a tutorial slot
+     */
+    void addTutorial(Tutorial tutorial);
+
+    /**
+     * Checks whether tutorial exists in the address book
+     */
+    boolean hasTutorial(Tutorial tutorial);
 
     /** Returns an unmodifiable view of the filtered person list */
     ObservableList<Person> getFilteredPersonList();
