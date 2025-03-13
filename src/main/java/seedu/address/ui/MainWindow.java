@@ -36,7 +36,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
+    private StudentListPanel studentListPanel;
     private TutorialListPanel tutorialListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
@@ -48,13 +48,13 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private VBox personList;
+    private VBox studentList;
 
     @FXML
     private VBox tutorialList;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane studentListPanelPlaceholder;
 
     @FXML
     private StackPane tutorialListPanelPlaceholder;
@@ -127,8 +127,8 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        studentListPanel = new StudentListPanel(logic.getFilteredStudentList());
+        studentListPanelPlaceholder.getChildren().add(studentListPanel.getRoot());
 
         tutorialListPanel = new TutorialListPanel(logic.getFilteredTutorialList());
         tutorialListPanelPlaceholder.getChildren().add(tutorialListPanel.getRoot());
@@ -164,18 +164,18 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Sets the visibility of the person and tutorial list UI elements according to
+     * Sets the visibility of the student and tutorial list UI elements according to
      * the specified navigation mode.
      */
     private void handleMode(NavigationMode mode) {
         switch (mode) {
         case PERSON:
-            setElementVisibility(personList, true);
+            setElementVisibility(studentList, true);
             setElementVisibility(tutorialList, false);
             break;
 
         case TUTORIAL:
-            setElementVisibility(personList, false);
+            setElementVisibility(studentList, false);
             setElementVisibility(tutorialList, true);
             break;
 
@@ -215,8 +215,8 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
+    public StudentListPanel getStudentListPanel() {
+        return studentListPanel;
     }
 
     /**
