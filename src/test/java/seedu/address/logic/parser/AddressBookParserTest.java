@@ -14,14 +14,18 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddTutorialCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteTutorialCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListTutorialCommand;
+import seedu.address.logic.commands.TutorialCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
@@ -48,8 +52,8 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_delete() throws Exception {
-        DeleteCommand command = (DeleteCommand) parser.parseCommand(
-                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        DeleteCommand command = (DeleteCommand) parser
+                        .parseCommand(DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
         assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
     }
 
@@ -57,8 +61,9 @@ public class AddressBookParserTest {
     public void parseCommand_edit() throws Exception {
         Person person = new PersonBuilder().build();
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder(person).build();
-        EditCommand command = (EditCommand) parser.parseCommand(EditCommand.COMMAND_WORD + " "
-                + INDEX_FIRST_PERSON.getOneBased() + " " + PersonUtil.getEditPersonDescriptorDetails(descriptor));
+        EditCommand command = (EditCommand) parser
+                        .parseCommand(EditCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased() + " "
+                                        + PersonUtil.getEditPersonDescriptorDetails(descriptor));
         assertEquals(new EditCommand(INDEX_FIRST_PERSON, descriptor), command);
     }
 
@@ -72,7 +77,7 @@ public class AddressBookParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
+                        FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
         assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
     }
 
@@ -90,12 +95,57 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
-        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+        assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), (
+        ) -> parser.parseCommand(""));
     }
 
     @Test
     public void parseCommand_unknownCommand_throwsParseException() {
-        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, () -> parser.parseCommand("unknownCommand"));
+        assertThrows(ParseException.class, MESSAGE_UNKNOWN_COMMAND, (
+        ) -> parser.parseCommand("unknownCommand"));
+    }
+
+    @Test
+    public void parseCommand_tutorialListCommand_success() throws ParseException {
+        String commandString = "%s %s".formatted(TutorialCommand.COMMAND_WORD, ListTutorialCommand.COMMAND_WORD);
+
+        assertTrue(parser.parseCommand(commandString) instanceof ListTutorialCommand);
+    }
+
+    @Test
+    public void parseCommand_tutorialAddCommand_success() throws ParseException {
+        var tutorialName = "Tutorial-_-Name1";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, tutorialName);
+
+        var actual = parser.parseCommand(cmd);
+        assertTrue(actual instanceof AddTutorialCommand);
+    }
+
+    @Test
+    public void parseCommand_tutorialAddCommand_invalidName() {
+        var invalidTutName = "Tutorial-_%-Name";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, AddTutorialCommand.COMMAND_WORD, invalidTutName);
+
+        assertThrows(ParseException.class, (
+        ) -> parser.parseCommand(cmd));
+    }
+
+    @Test
+    public void parseCommand_tutorialDeleteCommand_success() throws ParseException {
+        var tutorialName = "Tutorial-_-Name1";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, DeleteTutorialCommand.COMMAND_WORD, tutorialName);
+
+        var actual = parser.parseCommand(cmd);
+        assertTrue(actual instanceof DeleteTutorialCommand);
+    }
+
+    @Test
+    public void parseCommand_tutorialDeleteCommand_invalidName() {
+        var invalidTutName = "Tutorial-_%-Name";
+        var cmd = "%s %s %s".formatted(TutorialCommand.COMMAND_WORD, DeleteTutorialCommand.COMMAND_WORD,
+                        invalidTutName);
+
+        assertThrows(ParseException.class, (
+        ) -> parser.parseCommand(cmd));
     }
 }

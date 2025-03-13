@@ -25,7 +25,8 @@ public class ConfigUtilTest {
 
     @Test
     public void read_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> read(null));
+        assertThrows(NullPointerException.class, (
+        ) -> read(null));
     }
 
     @Test
@@ -35,7 +36,8 @@ public class ConfigUtilTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataLoadingException.class, () -> read("NotJsonFormatConfig.json"));
+        assertThrows(DataLoadingException.class, (
+        ) -> read("NotJsonFormatConfig.json"));
     }
 
     @Test
@@ -75,12 +77,14 @@ public class ConfigUtilTest {
 
     @Test
     public void save_nullConfig_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> save(null, "SomeFile.json"));
+        assertThrows(NullPointerException.class, (
+        ) -> save(null, "SomeFile.json"));
     }
 
     @Test
     public void save_nullFile_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> save(new Config(), null));
+        assertThrows(NullPointerException.class, (
+        ) -> save(new Config(), null));
     }
 
     @Test
@@ -89,12 +93,12 @@ public class ConfigUtilTest {
 
         Path configFilePath = tempDir.resolve("TempConfig.json");
 
-        //Try writing when the file doesn't exist
+        // Try writing when the file doesn't exist
         ConfigUtil.saveConfig(original, configFilePath);
         Config readBack = ConfigUtil.readConfig(configFilePath).get();
         assertEquals(original, readBack);
 
-        //Try saving when the file exists
+        // Try saving when the file exists
         original.setLogLevel(Level.FINE);
         ConfigUtil.saveConfig(original, configFilePath);
         readBack = ConfigUtil.readConfig(configFilePath).get();
@@ -107,10 +111,7 @@ public class ConfigUtilTest {
     }
 
     private Path addToTestDataPathIfNotNull(String configFileInTestDataFolder) {
-        return configFileInTestDataFolder != null
-                                  ? TEST_DATA_FOLDER.resolve(configFileInTestDataFolder)
-                                  : null;
+        return configFileInTestDataFolder != null ? TEST_DATA_FOLDER.resolve(configFileInTestDataFolder) : null;
     }
-
 
 }
