@@ -1,23 +1,12 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
 import seedu.address.model.person.student.Student;
 import seedu.address.model.person.student.StudentID;
-import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.model.tutorial.Tutorial;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link Student}.
@@ -48,7 +37,8 @@ public class JsonAdaptedStudent extends JsonAdaptedPerson {
     public Student toModelType() throws IllegalValueException {
 
         if (id == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, StudentID.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, StudentID.class.getSimpleName()));
         }
         if (!StudentID.isValidID(id)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
@@ -56,7 +46,8 @@ public class JsonAdaptedStudent extends JsonAdaptedPerson {
         final StudentID modelStudentId = new StudentID(id);
 
         if (tutorial == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Tutorial.class.getSimpleName()));
+            throw new IllegalValueException(String.format(
+                    MISSING_FIELD_MESSAGE_FORMAT, Tutorial.class.getSimpleName()));
         }
         if (!Tutorial.isValidName(tutorial)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
