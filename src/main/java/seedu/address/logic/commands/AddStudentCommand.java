@@ -21,13 +21,12 @@ public class AddStudentCommand extends AddCommand {
 
     public static final String COMMAND_WORD = "student";
 
-    public static final String MESSAGE_USAGE = "Usage: add student " + PREFIX_ID_STUDENT + "STUDENT_ID "
-            + PREFIX_NAME + "NAME " + PREFIX_PHONE + "PHONE "
-            + PREFIX_EMAIL + "EMAIL " + PREFIX_TUTORIAL_SESSION
-            + "TUTORIAL " + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " " + PREFIX_NAME + "John Doe " + PREFIX_ID_STUDENT + "A0276354B "
-            + PREFIX_PHONE + "98765432 " + PREFIX_EMAIL + "e1234567@u.nus.edu " + PREFIX_TUTORIAL_SESSION
-            + "T03 " + PREFIX_TAG + "hasQuestion " + PREFIX_TAG + "wantsConsultation";
+    public static final String MESSAGE_USAGE = "Usage: add student " + PREFIX_ID_STUDENT + "STUDENT_ID " + PREFIX_NAME
+                    + "NAME " + PREFIX_PHONE + "PHONE " + PREFIX_EMAIL + "EMAIL " + PREFIX_TUTORIAL_SESSION
+                    + "TUTORIAL " + "[" + PREFIX_TAG + "TAG]...\n" + "Example: " + COMMAND_WORD + " " + PREFIX_NAME
+                    + "John Doe " + PREFIX_ID_STUDENT + "A0276354B " + PREFIX_PHONE + "98765432 " + PREFIX_EMAIL
+                    + "e1234567@u.nus.edu " + PREFIX_TUTORIAL_SESSION + "T03 " + PREFIX_TAG + "hasQuestion "
+                    + PREFIX_TAG + "wantsConsultation";
 
     public static final String MESSAGE_SUCCESS = "New student added: %1$s";
 

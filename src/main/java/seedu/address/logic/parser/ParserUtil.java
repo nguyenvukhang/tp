@@ -134,8 +134,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String tutorial name} into an {@code Tutorial}. Leading and trailing
-     * whitespaces will be trimmed.
+     * Parses a {@code String tutorial name} into an {@code Tutorial}. Leading and
+     * trailing whitespaces will be trimmed.
      *
      * @throws ParseException
      *             if the given {@code address} is invalid.
@@ -150,8 +150,8 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String student ID} into an {@code StudentID}. Leading and trailing
-     * whitespaces will be trimmed.
+     * Parses a {@code String student ID} into an {@code StudentID}. Leading and
+     * trailing whitespaces will be trimmed.
      *
      * @throws ParseException
      *             if the given {@code address} is invalid.

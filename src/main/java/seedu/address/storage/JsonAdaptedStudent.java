@@ -38,7 +38,7 @@ public class JsonAdaptedStudent extends JsonAdaptedPerson {
 
         if (id == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, StudentID.class.getSimpleName()));
+                            String.format(MISSING_FIELD_MESSAGE_FORMAT, StudentID.class.getSimpleName()));
         }
         if (!StudentID.isValidID(id)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
@@ -46,8 +46,8 @@ public class JsonAdaptedStudent extends JsonAdaptedPerson {
         final StudentID modelStudentId = new StudentID(id);
 
         if (tutorial == null) {
-            throw new IllegalValueException(String.format(
-                    MISSING_FIELD_MESSAGE_FORMAT, Tutorial.class.getSimpleName()));
+            throw new IllegalValueException(
+                            String.format(MISSING_FIELD_MESSAGE_FORMAT, Tutorial.class.getSimpleName()));
         }
         if (!Tutorial.isValidName(tutorial)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);

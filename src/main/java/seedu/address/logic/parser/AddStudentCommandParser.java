@@ -35,16 +35,16 @@ public class AddStudentCommandParser implements Parser<AddStudentCommand> {
      *             if the user input does not conform the expected format
      */
     public AddStudentCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ID_STUDENT,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TUTORIAL_SESSION, PREFIX_TAG);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_ID_STUDENT, PREFIX_PHONE,
+                        PREFIX_EMAIL, PREFIX_TUTORIAL_SESSION, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID_STUDENT,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TUTORIAL_SESSION) || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ID_STUDENT, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_TUTORIAL_SESSION) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ID_STUDENT,
-                PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TUTORIAL_SESSION);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_ID_STUDENT, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_TUTORIAL_SESSION);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         StudentID studentId = ParserUtil.parseStudentId(argMultimap.getValue(PREFIX_ID_STUDENT).get());
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());

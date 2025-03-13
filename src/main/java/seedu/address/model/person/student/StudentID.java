@@ -11,7 +11,7 @@ public class StudentID {
 
     public static final String VALIDATION_REGEX = "A\\d{7}[A-Z]";
     public static final String MESSAGE_CONSTRAINTS = "Student IDs should be in the form AXXXXXXX[A-Z], "
-            + "and it should not be blank";
+                    + "and it should not be blank";
 
     public final String id;
 
