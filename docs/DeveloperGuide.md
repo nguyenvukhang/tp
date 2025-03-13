@@ -277,29 +277,356 @@ _{Explain here how the data archiving feature will be implemented}_
 **Value proposition**: manage TA student contacts & administrative tasks faster than a typical mouse/GUI driven app
 
 
-### User stories
+### **User Stories**
 
-Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
+| Priority | As a … | I want to … | So that I can … | Accepted? |
+|----------|--------|-------------|----------------|------------|
+| High     | TA     | Save a student's data | Find their details to contact them if needed | No |
+| High     | TA     | View a list of all students | See all students I have created | No |
+| Medium   | TA     | Search for contacts using name, student ID, or email | Locate students efficiently | No |
+| Medium   | TA     | Add notes to each contact | Track important details like consultation requests, special accommodations, and weaknesses | No |
+| Medium   | TA     | View the student's data in tabular form | See how the class is doing in general | No |
+| Medium   | TA     | Access the contact details of my students | Message them | No |
+| High     | TA     | Create tutorial slots | Manage the lesson format for the students | No |
+| High     | TA     | Add students to groups | Manage them on a group level | No |
+| High     | TA     | Create an assignment entry with a deadline | Track student submissions | No |
+| Medium   | TA     | Track whether a student has submitted an assignment | Monitor completion rates | No |
+| Medium   | TA     | See submission rates | Assess overall assignment difficulty | No |
+| Medium   | TA     | Mark my student as present/unpresent for a specific tutorial slot | Track their attendance | No |
+| Medium   | TA     | View the overall performance of my students | Identify if my class is performing well overall | No |
+| High     | TA     | Delete tutorial groups | Remove outdated groups | No |
+| High     | TA     | Delete a student's data | Make space for the next semester's class | No |
 
-| Priority | As a &hellip; | I want to &hellip;                                                | So that I can &hellip;                                                                  |
-| -------- | ------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `* * *`  | TA            | save a students data                                              | find their details to contact them if needed                                            |
-| `* * *`  | TA            | view a list of all students                                       | see all students I have created                                                         |
-| `* *`    | TA            | search for contacts using name, student ID, or email              | locate students efficiently                                                             |
-| `* *`    | TA            | add notes to each contact                                         | track important details like consultation requests, special accommodations and weakness |
-| `* *`    | TA            | view the student's data in tabular form                           | see how the class in doing in general                                                   |
-| `* *`    | TA            | access the contact details of my students                         | message them                                                                            |
-| `* * *`  | TA            | create tutorial slots                                             | manage the lesson format for the students                                               |
-| `* * *`  | TA            | add students to groups                                            | manage them on a group level                                                            |
-| `* * *`  | TA            | create an assignment entry with a deadline                        | track student submissions                                                               |
-| `* *`    | TA            | track whether a student has submitted an assignment               | monitor completion rates                                                                |
-| `* *`    | TA            | see submission rates                                              | assess overall assignment difficulty                                                    |
-| `* *`    | TA            | mark my student as present/unpresent for a specific tutorial slot | track their attendence                                                                  |
-| `* *`    | TA            | view the overall performance of my students                       | identify if my class is performing well overall                                         |
-| `* * *`  | TA            | delete tutorial groups                                            | remove outdated groups                                                                  |
-| `* * *`  | TA            | delete a student's data                                           | make space for the next semester's class                                                |
+## **Feature List**
 
-### Use cases
+| #  | Feature                                        | Priority        | Done        |
+|----|-----------------------------------------------|----------------|------------|
+| 1  | Add students                                  | MVP            | v1.2       |
+| 2  | List all students                            | MVP            | v1.2       |
+| 3  | Delete students                              | MVP            | v1.2       |
+| 4  | Add Tutorial Slot                            | MVP            | v1.2       |
+| 5  | Add students to tutorial group slots        | MVP            | v1.2       |
+| 6  | Delete Student from Tutorial Slot           | MVP            | v1.2       |
+| 7  | Delete tutorial group slots                 | MVP            | v1.2       |
+| 8  | List Tutorial Slots                         | MVP            | v1.2       |
+| 9  | Save to file                                  | Nice to have   |  v1.2   |
+| 10 | Search for students                           | Nice to have   | Coming soon |
+| 11 | Create a lesson under tutorial slot for each student | Nice to have   | Coming soon |
+| 12 | Mark lesson attendance                       | Nice to have   | Coming soon |
+| 13 | Delete a lesson under tutorial slot for each student | Nice to have   | Coming soon |
+| 14 | View overall attendance                      | Nice to have   | Coming soon |
+| 15 | Export student contact list                  | Nice to have   | Coming soon |
+| 16 | Make announcements to students through email | Nice to have   | Coming soon |
+## **Feature Specification**
+
+#### Add Student
+
+**Feature**: Add student  
+**Purpose**: To add student contact into the taskbook
+
+**Format**: `add n/NAME p/PHONE_NUMBER e/EMAIL h/HANDLE [t/TUTORIAL_NAME]`
+
+- **NAME** is the name of the student  
+  If string is invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-), or whitespace ( )”
+- **PHONE_NUMBER** is the phone number of the student  
+  A valid phone number is defined as having 8 digit number that starts with 6, 8, or 9  
+  If PHONE_NUMBER isn’t valid, show error message: “Phone number must have only 8 digits and starts with either 6, 8 or 9”
+- **HANDLE** refers to online username of the student (e.g., Telegram or social media platforms)  
+  If string is invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-), or whitespace ( )”
+- **TUTORIAL_NAME** is the name of the tutorial group  
+  If tutorial group doesn’t exist: “<TUTORIAL NAME> doesn’t exist”  
+  If tutorial group is not a valid string: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”
+
+**Outputs**:  
+- **Success**: Show the newly created student with a success message of “New student added: <STUDENT INFORMATION>”  
+- **Incomplete command**: Show error message giving format of command:  
+  “Incomplete command. The format is `add n/NAME p/PHONE_NUMBER e/EMAIL h/HANDLE [t/TUTORIAL_NAME]`”
+
+**Duplicate handling**:  
+Each student is uniquely identified by their NAME, so duplicate entries are not allowed.
+
+---
+
+#### List All Students
+
+**Feature**: List all students  
+**Purpose**: To display a list of all students
+
+**Format**: `list`  
+**Parameters**: None
+
+**Outputs**:  
+- **Success**: Shows a listing of all the students with success message: “Listed all Students!”
+
+---
+#### Delete Student
+
+**Feature**: Delete student  
+**Purpose**: Deletes the specified person from the address book
+
+**Format**: `delete INDEX`
+
+- **INDEX** is the index of the user in the current listing  
+  If INDEX is not a positive integer: “INDEX must be a positive integer”  
+  If INDEX is less than 1 or greater than the number of students listed currently: “Student doesn’t exist”
+
+**Examples**:  
+`delete 1`
+
+**Outputs**:  
+- **Success**: Show success message: “Delete Student: </STUDENT INFORMATION/>”  
+- **Incomplete command**: Show error message giving format of command: “delete INDEX”
+
+**Possible errors**:  
+- If the user doesn’t have the student listing view, show error message:  
+  “Not in student view; type ‘list’ to list all the students”
+
+---
+
+#### Add Tutorial Slot
+
+**Feature**: Add tutorial slot  
+**Purpose**: Add tutorial slots for TA to manage the students
+
+**Format**: `tutorial add NAME`
+
+- **NAME** is the name of the tutorial group  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”
+
+**Outputs**:  
+- **Success**: Shows the newly added tutorial slot in the user interface: “Successfully added tutorial ‘TUTORIAL_NAME’”  
+- **Duplicate**: If a tutorial slot with the same name already exists: “Tutorial slot already exists”  
+- **Incomplete command**: Show error message giving format of command: “Incomplete command. The format is `tutorial add NAME`”
+
+**Duplicate handling**:  
+Each tutorial slot is uniquely identified by NAME, and duplicate tutorial slots are not allowed.
+
+---
+
+#### Add Student to Tutorial Slot
+
+**Feature**: Add student to tutorial slot  
+**Purpose**: Manage students at a group level
+
+**Format**: `tutorial add-student TUTORIAL_NAME [s/INDEX]`
+
+**Examples**:  
+`tutorial add-student CS2040S-T58 s/1 s/2 s/3`  
+`tutorial add-student CS2040S-T58 s/1`
+
+**Parameters**:  
+- **INDEX** refers to the student index in the list  
+  If INDEX is not a positive integer: “INDEX must be a positive integer”  
+  If INDEX is less than 1 or greater than the number of students listed currently: “Student doesn’t exist”  
+- **TUTORIAL_NAME** refers to the tutorial group  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”  
+  If TUTORIAL_NAME doesn’t exist: “TUTORIAL_NAME doesn’t exist”
+
+**Outputs**:  
+- **Success**: Maintain the current listing and update relevant students  
+- **Not in student view**: “Not in students view; type ‘list’ to list all the students”  
+- **Incomplete command**: Show error message giving format of command:  
+  “Incomplete command. The format is `tutorial add-student TUTORIAL_NAME [s/INDEX]`”
+
+---
+
+#### Delete Student from Tutorial Slot
+
+**Feature**: Delete student from tutorial slot  
+**Purpose**: Remove the student from tutorial class
+
+**Format**: `tutorial delete-student TUTORIAL_NAME [s/INDEX]`
+
+**Examples**:  
+`tutorial delete-student CS2040S-T58 s/1`  
+`tutorial delete-student CS2040S-T58 s/1 s/2`
+
+**Parameters**:  
+- **INDEX** refers to the student number  
+  If INDEX is not a positive integer: “INDEX must be a positive integer”  
+  If INDEX is less than 1 or greater than the number of students listed currently: “Student doesn’t exist”
+
+**Outputs**:  
+- **Success**: Maintains the current listing with updated tutorial info, and displays “Successfully removed students from ‘TUTORIAL_NAME’”  
+- **Student(s) not in tutorial**: “Student(s) not in tutorial”  
+
+---
+
+#### Delete Tutorial Slot
+
+**Feature**: Delete tutorial slot  
+**Purpose**: Remove tutorial slots that are no longer in use
+
+**Format**: `tutorial delete TUTORIAL_NAME`
+
+**Examples**:  
+`tutorial delete CS2040S-T58`
+
+**Parameters**:  
+- **TUTORIAL_NAME** is the name of the tutorial group  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”  
+  If TUTORIAL_NAME doesn’t exist: “TUTORIAL_NAME doesn’t exist”
+
+**Outputs**:  
+- **Success**: Shows success message of “Successfully deleted ‘TUTORIAL_NAME’”  
+  The listing view can maintain its current view.
+
+---
+
+#### List Tutorial Slots
+
+**Feature**: List tutorial slots  
+**Purpose**: Show all tutorial slots tracked.
+
+**Format**: `tutorial list`
+
+**Parameters**: None
+
+**Outputs**:  
+- **Success**: Lists all tutorial slots with the success message: “Showing all tutorial slots.”
+
+---
+
+#### Save to File
+
+**Feature**: Save to file  
+**Purpose**: To save all the current student and tutorial data to a file  
+
+**Format**: None
+
+**Outputs**:  None
+
+**Duplicate handling**:  
+No duplicates allowed. The file will store the latest data, replacing the previous version.
+
+---
+
+#### Search for Students
+
+**Feature**: Search for students  
+**Purpose**: To search for students by their name, phone number, email, or handle  
+
+**Format**: `search <KEYWORD>`  
+
+**Outputs**:  
+- **Success**: Displays all students matching the search term with the success message: “Found <NUMBER> students matching ‘<KEYWORD>’”  
+- **No results**: Show message: “No students found for ‘<KEYWORD>’”  
+
+**Duplicate handling**: Nil
+
+---
+
+#### Create a Lesson Under Tutorial Slot for Each Student
+
+**Feature**: Create a lesson under tutorial slot for each student  
+**Purpose**: To create and assign a lesson to a specific tutorial slot for students  
+
+**Format**: `lesson add TUTORIAL_NAME l/LESSON_NAME d/DATE t/TIME`  
+
+- **TUTORIAL_NAME** refers to the tutorial group  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”  
+- **LESSON_NAME** refers to the name of the lesson  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”  
+- **DATE** and **TIME** refer to the lesson's scheduled date and time  
+
+**Outputs**:  
+- **Success**: Show success message: “Lesson <LESSON_NAME> successfully added for tutorial <TUTORIAL_NAME>”  
+- **Incomplete command**: Show error message: “Incomplete command. The format is `lesson add TUTORIAL_NAME l/LESSON_NAME d/DATE t/TIME`”  
+
+**Duplicate handling**:  
+Lessons are unique to each tutorial slot, and duplicates are not allowed.
+
+---
+
+#### Mark Lesson Attendance
+
+**Feature**: Mark lesson attendance  
+**Purpose**: To mark attendance for students in a specific lesson under a tutorial slot  
+
+**Format**: `attendance mark TUTORIAL_NAME l/LESSON_NAME s/INDEX`  
+
+- **TUTORIAL_NAME** refers to the tutorial group  
+  If characters are invalid: “The only valid characters are: letters (A-Z, a-z), digits (0-9), underscores (_), hyphens (-)”  
+- **LESSON_NAME** refers to the lesson name  
+- **INDEX** refers to the student's index  
+
+
+**Outputs**:  
+- **Success**: Show success message: “Successfully marked attendance for <STUDENT_NAME> in lesson <LESSON_NAME>”  
+- **Incomplete command**: Show error message: “Incomplete command. The format is `attendance mark TUTORIAL_NAME l/LESSON_NAME s/INDEX`”  
+
+**Duplicate handling**:  
+Attendance can only be marked once per lesson. If already marked, no changes are made.
+
+---
+
+#### Delete a Lesson Under Tutorial Slot for Each Student
+
+**Feature**: Delete a lesson under tutorial slot for each student  
+**Purpose**: To delete a lesson assigned to a tutorial slot  
+
+**Format**: `lesson delete TUTORIAL_NAME l/LESSON_NAME`  
+
+- **TUTORIAL_NAME** refers to the tutorial group  
+- **LESSON_NAME** refers to the lesson to be deleted  
+
+**Outputs**:  
+- **Success**: Show success message: “Lesson <LESSON_NAME> successfully deleted from tutorial <TUTORIAL_NAME>”  
+- **Incomplete command**: Show error message: “Incomplete command. The format is `lesson delete TUTORIAL_NAME l/LESSON_NAME`”  
+
+
+**Duplicate handling**:  Nil
+
+---
+
+#### View Overall Attendance
+
+**Feature**: View overall attendance  
+**Purpose**: To view the overall attendance for all students in the tutorial  
+
+**Format**: `attendance view TUTORIAL_NAME`  
+
+- **TUTORIAL_NAME** refers to the tutorial group  
+
+**Outputs**:  
+- **Success**: Show message: “Overall attendance for tutorial <TUTORIAL_NAME>: <ATTENDANCE_PERCENTAGE>% of students attended”  
+
+
+**Duplicate handling**: Nil
+
+---
+
+#### Export Student Contact List
+
+**Feature**: Export student contact list  
+**Purpose**: To export the contact list of all students  
+
+**Format**: `export contacts`  
+
+**Outputs**:  
+- **Success**: Show message: “Successfully exported student contact list”  
+
+**Duplicate handling**: Nil
+---
+
+#### Make Announcements to Students Through Email
+
+**Feature**: Make announcements to students through email  
+**Purpose**: To send announcements to all students through email  
+
+**Format**: `announcement email m/MESSAGE`  
+
+- **MESSAGE** refers to the announcement content  
+
+**Outputs**:  
+- **Success**: Show success message: “Announcement sent to all students via email: <MESSAGE>”  
+- **Incomplete command**: Show error message: “Incomplete command. The format is `announcement email m/MESSAGE`”  
+
+**Duplicate handling**:  
+Emails are sent to all students once.
+
+
+## **Use cases**
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
