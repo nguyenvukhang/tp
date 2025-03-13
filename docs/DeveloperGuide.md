@@ -309,7 +309,7 @@ _{Explain here how the data archiving feature will be implemented}_
 | 6  | Delete Student from Tutorial Slot           | MVP            | v1.2       |
 | 7  | Delete tutorial group slots                 | MVP            | v1.2       |
 | 8  | List Tutorial Slots                         | MVP            | v1.2       |
-| 9  | Save to file                                  | Nice to have   |  v1.2   |
+| 9  | Retrieve and Save to file                   | Nice to have   |  v1.2   |
 | 10 | Search for students                           | Nice to have   | Coming soon |
 | 11 | Create a lesson under tutorial slot for each student | Nice to have   | Coming soon |
 | 12 | Mark lesson attendance                       | Nice to have   | Coming soon |
@@ -317,6 +317,8 @@ _{Explain here how the data archiving feature will be implemented}_
 | 14 | View overall attendance                      | Nice to have   | Coming soon |
 | 15 | Export student contact list                  | Nice to have   | Coming soon |
 | 16 | Make announcements to students through email | Nice to have   | Coming soon |
+
+
 ## **Feature Specification**
 
 #### Add Student
@@ -487,9 +489,9 @@ Each tutorial slot is uniquely identified by NAME, and duplicate tutorial slots 
 
 ---
 
-#### Save to File
+#### Retrieve and Save to File
 
-**Feature**: Save to file  
+**Feature**: Retrieve and Save to file  
 **Purpose**: To save all the current student and tutorial data to a file  
 
 **Format**: None
@@ -628,141 +630,321 @@ Emails are sent to all students once.
 
 ## **Use cases**
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is the `Taskbook` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Use case: Create a student
+#### Use case: Add student
 
-**Main Success Scenario (MSS)**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User sends request to System to create student
-2. System creates a new user
-3. Use case ends
+**MSS**  
+1. User sends request to System to create student  
+2. System creates a new user  
+3. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If input is erroneous  
+  - 2a1. System displays an error message  
+  - 2a2. Use case resumes at step 1  
 
-- If input is erroneous
-  - System displays an error message
-  - Use case resumes at step 1
+---
 
-#### Use case: Delete a student
+#### Use case: Delete student
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User requests to list persons
-2. System shows a list of persons
-3. User requests to delete a specific person in the list
-4. System deletes the person
-5. Use case ends.
+**MSS**  
+1. User requests to list persons  
+2. System shows a list of persons  
+3. User requests to delete a specific person in the list  
+4. System deletes the person  
+5. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If the given index is invalid  
+  - 2a1. System shows an error message  
+  - 2a2. Use case resumes at step 1  
 
-- The given index is invalid.
-  - System shows an error message.
-  - Use case resumes at step 1.
+---
 
 #### Use case: List students
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User requests to list students
-2. System lists all students
-3. Use case ends
+**MSS**  
+1. User requests to list students  
+2. System lists all students  
+3. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If there are no students  
+  - 2a1. System doesn't display anything  
+  - 2a2. Use case ends  
 
-- If there are no students
-  - System doesn't display anything
-  - Use case ends
+---
 
 #### Use case: List tutorial slots
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User requests to list tutorial slots
-2. System lists all tutorial slots
-3. Use case ends
+**MSS**  
+1. User requests to list tutorial slots  
+2. System lists all tutorial slots  
+3. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If there are no tutorial slots  
+  - 2a1. System doesn't display anything  
+  - 2a2. Use case ends  
 
-- If there are no tutorial slots
-  - System doesn't display anything
-  - Use case ends
+---
 
 #### Use case: Create a tutorial slot
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User requests to create tutorial slot
-2. System creates a new tutorial slot
-3. Use case ends
+**MSS**  
+1. User requests to create tutorial slot  
+2. System creates a new tutorial slot  
+3. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If tutorial slot already exists  
+  - 2a1. System shows an error message  
+  - 2a2. Use case continues at step 1  
+- 2b. If tutorial slot name is invalid  
+  - 2b1. System shows an error message  
+  - 2b2. Use case continues at step 1  
 
-- If tutorial slot already exists
-  - System shows an error message
-  - Use case continues at step 1
-- If tutorial slot name is invalid
-  - System shows an error message
-  - Use case continues at step 1
+---
 
 #### Use case: Delete a tutorial slot
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User requests to delete tutorial slot
-2. System deletes specified tutorial slot
-3. Use case ends
+**MSS**  
+1. User requests to delete tutorial slot  
+2. System deletes specified tutorial slot  
+3. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If specified tutorial slot doesn't exist  
+  - 2a1. System shows an error message  
+  - 2a2. Use case ends  
+- 2b. If tutorial slot name is invalid  
+  - 2b1. System shows an error message  
+  - 2b2. Use case continues at step 1  
 
-- If specified tutorial slot doesn't exist
-  - System shows an error message
-  - Use case ends
-- If tutorial slot name is invalid
-  - System shows an error message
-  - Use case continues at step 1
+---
 
 #### Use case: Add student to tutorial slot
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User lists all students
-2. System lists all students
-3. User sends the command to add students to tutorial slots
-4. System adds the students to the respective tutorial slots
-5. Use case ends
+**MSS**  
+1. User lists all students  
+2. System lists all students  
+3. User sends the command to add students to tutorial slots  
+4. System adds the students to the respective tutorial slots  
+5. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If user doesn't list students first  
+  - 2a1. System shows an error message  
+  - 2a2. Use case continues at step 1  
+- 3a. If user inputs invalid information  
+  - 3a1. System shows an error message  
+  - 3a2. Use case continues at step 1  
 
-- If user doesn't list students first,
-  - System shows error message
-  - Use case continues at step 1
-- If user inputs invalid information
-  - System shows error message
-  - Use case continues at step 1
-
+---
 
 #### Use case: Delete student from tutorial slot
 
-**MSS**
+**System**: Taskbook  
+**Actor**: User  
 
-1. User lists all students
-2. System lists all students
-3. User sends the command to delete students to tutorial slots
-4. System deletes the students to the respective tutorial slots
-5. Use case ends
+**MSS**  
+1. User lists all students  
+2. System lists all students  
+3. User sends the command to delete students from tutorial slots  
+4. System deletes the students from the respective tutorial slots  
+5. Use case ends  
 
-**Extensions**
+**Extensions**  
+- 2a. If user doesn't exist  
+  - 2a1. System shows an error message  
+  - 2a2. Use case ends  
+- 2b. If user doesn't list students first  
+  - 2b1. System shows an error message  
+  - 2b2. Use case continues at step 1  
+- 3a. If user inputs invalid information  
+  - 3a1. System shows an error message  
+  - 3a2. Use case continues at step 1  
 
-- If user doesn't exist
-  - System shows error message
-  - Use case ends
-- If user doesn't list students first,
-  - System shows error message
-  - Use case continues at step 1
-- If user inputs invalid information
-  - System shows error message
-  - Use case continues at step 1
+---
+
+#### Use case: Retrieve and Save to file
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User requests to save the current data to a file  
+2. System saves the data to a file  
+3. Use case ends  
+
+**Extensions**  
+- 2a. If there is an error during the save process  
+  - 2a1. System displays an error message  
+  - 2a2. Use case ends  
+
+---
+
+#### Use case: Search for students
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User requests to search for a student  
+2. System prompts for search criteria  
+3. User enters the search criteria  
+4. System displays a list of students matching the search criteria  
+5. Use case ends  
+
+**Extensions**  
+- 3a. If no students match the search criteria  
+  - 3a1. System displays a message indicating no results found  
+  - 3a2. Use case ends  
+
+---
+
+#### Use case: Create a lesson under tutorial slot for each student
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User lists all tutorial slots  
+2. System lists all tutorial slots  
+3. User selects a tutorial slot and requests to create a lesson  
+4. System creates a lesson for each student in the selected tutorial slot  
+5. Use case ends  
+
+**Extensions**  
+- 2a. If no tutorial slots are available  
+  - 2a1. System displays a message indicating no available slots  
+  - 2a2. Use case ends  
+- 4a. If there is an error creating a lesson for any student  
+  - 4a1. System displays an error message for the affected student  
+  - 4a2. Use case continues at step 4 for remaining students  
+
+---
+
+#### Use case: Mark lesson attendance
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User lists all students in a tutorial slot  
+2. System lists all students in the selected tutorial slot  
+3. User marks attendance for each student  
+4. System updates attendance status for each student  
+5. Use case ends  
+
+**Extensions**  
+- 2a. If no students are listed in the tutorial slot  
+  - 2a1. System displays a message indicating no students in the slot  
+  - 2a2. Use case ends  
+- 3a. If attendance cannot be marked for a student  
+  - 3a1. System displays an error message for the affected student  
+  - 3a2. Use case continues at step 3 for remaining students  
+
+---
+
+#### Use case: Delete a lesson under tutorial slot for each student
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User lists all lessons for a tutorial slot  
+2. System lists all lessons for the selected tutorial slot  
+3. User selects the lesson to be deleted  
+4. System deletes the selected lesson for each student in the tutorial slot  
+5. Use case ends  
+
+**Extensions**  
+- 2a. If no lessons exist in the selected tutorial slot  
+  - 2a1. System displays a message indicating no lessons found  
+  - 2a2. Use case ends  
+- 4a. If there is an error deleting a lesson for any student  
+  - 4a1. System displays an error message for the affected student  
+  - 4a2. Use case continues at step 4 for remaining students  
+
+---
+
+#### Use case: View overall attendance
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User requests to view overall attendance  
+2. System displays a summary of overall attendance  
+3. Use case ends  
+
+**Extensions**  
+- 2a. If there is no attendance data available  
+  - 2a1. System displays a message indicating no attendance data  
+  - 2a2. Use case ends  
+
+---
+
+#### Use case: Export student contact list
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User requests to export the student contact list  
+2. System exports the contact list to a file  
+3. Use case ends  
+
+**Extensions**  
+- 2a. If there is an error during the export process  
+  - 2a1. System displays an error message  
+  - 2a2. Use case ends  
+
+---
+
+#### Use case: Make announcements to students through email
+
+**System**: Taskbook  
+**Actor**: User  
+
+**MSS**  
+1. User selects students to receive an announcement  
+2. System prompts for the email content  
+3. User enters the announcement content  
+4. System sends the email announcement to selected students  
+5. Use case ends  
+
+**Extensions**  
+- 2a. If no students are selected  
+  - 2a1. System displays a message indicating no students selected  
+  - 2a2. Use case ends  
+- 4a. If there is an error sending the email  
+  - 4a1. System displays an error message  
+  - 4a2. Use case ends  
+
 
 ### Non-Functional Requirements
 
@@ -853,42 +1035,210 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a person
+### Adding a student
 
-1. Deleting a person while all persons are being shown
+1. Adding a student
+   1. Prerequisites: None.
+   1. Test case: `add John Doe`<br>
+      Expected: A new student named "John Doe" is added to the student list. A success message confirming the addition is displayed.
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Test case: `add`<br>
+      Expected: Error message indicating that student details are incomplete. The system should ask for both first name and last name.
 
+   1. Test case: `add 12345`<br>
+      Expected: Error message indicating that the student name is invalid (numeric values are not allowed).
+
+### Listing all students
+
+1. Listing all students
+   1. Prerequisites: At least one student should be added to the list (e.g., `add John Doe`).
+   1. Test case: `list`<br>
+      Expected: A list of all students in the system is displayed.
+
+   1. Test case: `list` with no students<br>
+      Expected: A message saying "No students available" is displayed if the list is empty.
+
+### Deleting a student
+
+1. Deleting a student while all students are being shown
+   1. Prerequisites: List all students using the `list` command. There must be multiple students in the list (e.g., `add John Doe` and `add Jane Doe`).
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: The student with ID 1 (John Doe) is deleted from the list. A success message with the student details is shown.
 
    1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No student is deleted. An error message is shown indicating that the student ID 0 is invalid.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   1. Test case: `delete x` (where x is larger than the list size)<br>
+      Expected: Error message indicating that the student ID `x` does not exist.
 
-1. _{ more test cases …​ }_
+### Adding a tutorial slot
 
-### Creating a tutorial slot
+1. Adding a tutorial slot
+   1. Prerequisites: None.
+   1. Test case: `tutorial add cs2103-f15`<br>
+      Expected: A new tutorial slot `cs2103-f15` is added. The list of tutorial slots is updated and the new slot appears at the bottom of the list. A success message is displayed confirming the addition.
 
-1. Creating a tutorial slot
-    1. Test case: `tutorial add cs2103-f15`<br/>
-        Expected: Shows the list of tutorials.
-        Newly added tutorial should be at the bottom of the list.
-        Success message indicating tutorial is successfully added.
-    1. Test case: `tutorial add cs2103+f15`<br/>
-        Expected: Shows an error message indicating that name contains invalid characters.
-1. Create a tutorial slot with duplicate name
-    1. Prerequisites: Tutorial list should have a tutorial slot with name `cs2103-f15`.
-        - If not, u can create it using `tutorial add cs2103-f15`.
-    1. Test case: `tutorial add cs2103-f15`<br/>
-        Expected: An error messaging indicating that tutorial slot already exists.
+   1. Test case: `tutorial add cs2103+f15`<br>
+      Expected: Error message indicating that the slot name contains invalid characters (e.g., "+" is not allowed).
 
-### Saving data
+### Creating a tutorial slot with a duplicate name
+
+1. Prerequisites: Tutorial list should already contain a slot named `cs2103-f15`. If not, create it using `tutorial add cs2103-f15`.
+   1. Test case: `tutorial add cs2103-f15`<br>
+      Expected: Error message indicating that a tutorial slot with the name `cs2103-f15` already exists.
+
+### Adding students to tutorial group slots
+
+1. Adding students to a tutorial group slot
+   1. Prerequisites: A tutorial slot should already exist (e.g., `tutorial add cs2103-f15`) and at least one student should be in the system (e.g., `add John Doe`).
+   1. Test case: `addToSlot cs2103-f15 1`<br>
+      Expected: Student with ID 1 (John Doe) is added to the "cs2103-f15" tutorial slot. A success message is displayed confirming the addition.
+
+   1. Test case: `addToSlot cs2103-f15`<br>
+      Expected: Error message indicating that the student ID is missing. The system should prompt for a student ID.
+
+   1. Test case: `addToSlot cs9999-f15 1`<br>
+      Expected: Error message indicating that the tutorial slot `cs9999-f15` does not exist.
+
+### Deleting a student from a tutorial slot
+
+1. Deleting a student from a tutorial group slot
+   1. Prerequisites: A tutorial slot should already have at least one student (e.g., `addToSlot cs2103-f15 1`).
+   1. Test case: `deleteFromSlot cs2103-f15 1`<br>
+      Expected: Student with ID 1 (John Doe) is removed from the "cs2103-f15" tutorial slot. A success message confirming the removal is shown.
+
+   1. Test case: `deleteFromSlot cs2103-f15`<br>
+      Expected: Error message indicating that the student ID is missing. The system should prompt for a student ID.
+
+   1. Test case: `deleteFromSlot cs9999-f15 1`<br>
+      Expected: Error message indicating that the tutorial slot `cs9999-f15` does not exist.
+
+### Deleting tutorial group slots
+
+1. Deleting a tutorial slot
+   1. Prerequisites: At least one tutorial slot should exist (e.g., `tutorial add cs2103-f15`).
+   1. Test case: `tutorial delete cs2103-f15`<br>
+      Expected: The tutorial slot `cs2103-f15` is deleted from the system. A success message confirming the deletion is shown.
+
+   1. Test case: `tutorial delete cs9999-f15`<br>
+      Expected: Error message indicating that the tutorial slot `cs9999-f15` does not exist.
+
+### Listing tutorial slots
+
+1. Listing tutorial slots
+   1. Prerequisites: At least one tutorial slot should exist (e.g., `tutorial add cs2103-f15`).
+   1. Test case: `tutorial list`<br>
+      Expected: A list of all tutorial slots is displayed.
+
+   1. Test case: `tutorial list` with no tutorial slots<br>
+      Expected: Message indicating that no tutorial slots are available.
+
+### Retrieve and Save to file
+
+1. Saving data automatically
+   1. Prerequisites: Data must exist (e.g., at least one student or tutorial slot).
+   1. Test case: System automatically saves data when changes are made (e.g., adding or deleting a student).
+      Expected: Data is automatically saved to the file. No additional user action is needed. There should be no error message unless there's an issue.
+
+1. Retrieving data from the file
+
+   1. Prerequisites: A valid file with data exists (e.g., after a previous session or when data was previously saved).
+   1. Test case: Upon starting the application, the system automatically loads the data from the saved file.
+      Expected: Data from the saved file should be loaded correctly. All students, tutorial slots, and other saved information should be available without any errors.
+
+   1. Test case: The system successfully loads data from the file after a crash or unexpected shutdown.
+      Expected: When the system restarts, data should be restored from the last successfully saved state. The system should display the correct student and tutorial information.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. Prerequisites: Ensure that the file path provided is either missing or the file is corrupted.
+   
+   1. Test case: Attempt to retrieve data from a missing file (e.g., manually delete the file or simulate a missing file path).
+      Expected: The system should display an error message indicating that the file is missing. It should prompt the user to specify a valid file path. No data should be loaded, and the system should be in an empty state.
 
-1. _{ more test cases …​ }_
+   1. Test case: Attempt to retrieve data from a corrupted file (e.g., corrupt the file manually by altering its content).
+      Expected: The system should display an error message indicating the file is corrupted or unreadable. The system should not crash and should either load an empty state or prompt the user to correct the file.
+
+   1. Test case: Attempt to retrieve data from a file with incorrect format (e.g., the file has invalid content or format).
+      Expected: The system should display an error message indicating that the file format is invalid or cannot be read. The system should ask the user to provide a valid file format.
+
+   1. Test case: Retrieve data from a file with insufficient permissions (e.g., a read-only file or directory).
+      Expected: The system should display an error message indicating that the application does not have permission to read from the file. It should prompt the user to adjust permissions.
+
+   1. Test case: Attempt to retrieve data when the system’s storage is full or unavailable.
+      Expected: The system should display an error message indicating that the system cannot access or load data due to a storage issue. The user should be prompted to free up space or resolve the issue.
+
+
+### Searching for students
+
+1. Searching for a student
+   1. Prerequisites: At least one student must be added (e.g., `add John Doe`).
+   1. Test case: `search John`<br>
+      Expected: A list of students whose name contains "John" is displayed (e.g., "John Doe").
+
+   1. Test case: `search abc`<br>
+      Expected: Message indicating that no students were found matching the search term.
+
+### Creating a lesson under tutorial slot for each student
+
+1. Creating a lesson
+   1. Prerequisites: A tutorial slot must exist (e.g., `tutorial add cs2103-f15`).
+   1. Test case: `createLesson cs2103-f15`<br>
+      Expected: A lesson is created for the `cs2103-f15` tutorial slot. A success message is displayed confirming the creation.
+
+   1. Test case: `createLesson cs9999-f15`<br>
+      Expected: Error message indicating that the tutorial slot does not exist.
+
+### Marking lesson attendance
+
+1. Marking attendance for a lesson
+   1. Prerequisites: A lesson must exist (e.g., `createLesson cs2103-f15`), and a student must be enrolled in the tutorial slot.
+   1. Test case: `markAttendance cs2103-f15 1 present`<br>
+      Expected: Student with ID 1 (John Doe) is marked as present. A success message is displayed.
+
+   1. Test case: `markAttendance cs2103-f15 1 absent`<br>
+      Expected: Student with ID 1 (John Doe) is marked as absent. A success message is displayed.
+
+   1. Test case: `markAttendance cs9999-f15 1 present`<br>
+      Expected: Error message indicating that the tutorial slot does not exist.
+
+### Deleting a lesson under tutorial slot for each student
+
+1. Deleting a lesson
+   1. Prerequisites: A lesson must exist (e.g., `createLesson cs2103-f15`).
+   1. Test case: `deleteLesson cs2103-f15`<br>
+      Expected: The lesson for the `cs2103-f15` tutorial slot is deleted. A success message confirming the deletion is shown.
+
+   1. Test case: `deleteLesson cs9999-f15`<br>
+      Expected: Error message indicating that the tutorial slot does not exist.
+
+### Viewing overall attendance
+
+1. Viewing overall attendance
+   1. Prerequisites: At least one lesson should have attendance data (e.g., `markAttendance cs2103-f15 1 present`).
+   1. Test case: `viewAttendance`<br>
+      Expected: A summary of the overall attendance for all students is displayed.
+
+   1. Test case: `viewAttendance` with no attendance data<br>
+      Expected: Message indicating that no attendance data is available.
+
+### Exporting student contact list
+
+1. Exporting contact list
+   1. Prerequisites: At least one student should be added (e.g., `add John Doe`).
+   1. Test case: `exportContacts`<br>
+      Expected: The student contact list is exported successfully. A success message is shown.
+
+   1. Test case: `exportContacts` with invalid file path<br>
+      Expected: Error message indicating invalid file path.
+
+### Making announcements to students through email
+
+1. Making an announcement
+   1. Prerequisites: At least one student should have an email address in the system (e.g., `add John Doe` with email).
+   1. Test case: `announce email`<br>
+      Expected: An announcement email is sent to all students. A success message is shown confirming the email was sent.
+
+   1. Test case: `announce email` with invalid email format<br>
+      Expected: Error message indicating that the email format is invalid.
+
