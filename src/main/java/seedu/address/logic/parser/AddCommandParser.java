@@ -68,6 +68,9 @@ public class AddCommandParser implements Parser<AddCommand> {
             return new AddCommand(person);
         } else {
             String rest = " " + Arrays.stream(tokens).skip(1).collect(Collectors.joining(" "));
+            if (!subcmds.containsKey(tokens[0])) {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            }
             return subcmds.get(tokens[0]).parse(rest);
         }
     }
