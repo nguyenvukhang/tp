@@ -13,7 +13,9 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.student.StudentID;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.tutorial.Tutorial;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser
@@ -129,5 +131,37 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String tutorial name} into an {@code Tutorial}. Leading and trailing
+     * whitespaces will be trimmed.
+     *
+     * @throws ParseException
+     *             if the given {@code address} is invalid.
+     */
+    public static Tutorial parseTutorial(String tutorial) throws ParseException {
+        requireNonNull(tutorial);
+        String trimmedTutorial = tutorial.trim();
+        if (!Tutorial.isValidName(trimmedTutorial)) {
+            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+        }
+        return new Tutorial(trimmedTutorial);
+    }
+
+    /**
+     * Parses a {@code String student ID} into an {@code StudentID}. Leading and trailing
+     * whitespaces will be trimmed.
+     *
+     * @throws ParseException
+     *             if the given {@code address} is invalid.
+     */
+    public static StudentID parseStudentId(String studentId) throws ParseException {
+        requireNonNull(studentId);
+        String trimmedStudentId = studentId.trim();
+        if (!StudentID.isValidID(trimmedStudentId)) {
+            throw new ParseException(StudentID.MESSAGE_CONSTRAINTS);
+        }
+        return new StudentID(trimmedStudentId);
     }
 }

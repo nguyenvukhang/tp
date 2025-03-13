@@ -13,4 +13,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
 
+    /* Student-specific prefix definitions */
+    public static final Prefix PREFIX_ID_STUDENT = new Prefix("i/");
+    public static final Prefix PREFIX_TUTORIAL_SESSION = new Prefix("s/");
+
 }

@@ -15,6 +15,7 @@ import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.student.Student;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -105,6 +106,14 @@ class JsonAdaptedPerson {
 
         final Set<Tag> modelTags = new HashSet<>(personTags);
         return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTags);
+    }
+
+    public static JsonAdaptedPerson adaptPerson(Person person) {
+        if (person instanceof Student) {
+            return new JsonAdaptedStudent((Student) person);
+        }
+        // Add more conditions for future subtypes of Person (e.g. Manager, etc.)
+        return new JsonAdaptedPerson(person); // Default case
     }
 
 }
