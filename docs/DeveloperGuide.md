@@ -543,6 +543,21 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
+### Creating a tutorial slot
+
+1. Creating a tutorial slot
+    1. Test case: `tutorial add cs2103-f15`<br/>
+        Expected: Shows the list of tutorials.
+        Newly added tutorial should be at the bottom of the list.
+        Success message indicating tutorial is successfully added.
+    1. Test case: `tutorial add cs2103+f15`<br/>
+        Expected: Shows an error message indicating that name contains invalid characters.
+1. Create a tutorial slot with duplicate name
+    1. Prerequisites: Tutorial list should have a tutorial slot with name `cs2103-f15`.
+        - If not, u can create it using `tutorial add cs2103-f15`.
+    1. Test case: `tutorial add cs2103-f15`<br/>
+        Expected: An error messaging indicating that tutorial slot already exists.
+
 ### Saving data
 
 1. Dealing with missing/corrupted data files
