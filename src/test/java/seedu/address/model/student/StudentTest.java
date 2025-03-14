@@ -27,13 +27,13 @@ public class StudentTest {
 
     @Test
     public void isSamePerson() {
-        // same object -> returns true
+        // same object -> ok
         assertTrue(ALICE.isSamePerson(ALICE));
 
         // null -> returns false
         assertFalse(ALICE.isSamePerson(null));
 
-        // same name, all other attributes different -> returns true
+        // same name, all other attributes different -> ok
         Student editedAlice = new StudentBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
                         .withHandle(VALID_HANDLE_BOB).withTutorials(VALID_TUTORIAL_2).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
@@ -54,11 +54,11 @@ public class StudentTest {
 
     @Test
     public void equals() {
-        // same values -> returns true
+        // same values -> ok
         Student aliceCopy = new StudentBuilder(ALICE).build();
         assertTrue(ALICE.equals(aliceCopy));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(ALICE.equals(ALICE));
 
         // null -> returns false

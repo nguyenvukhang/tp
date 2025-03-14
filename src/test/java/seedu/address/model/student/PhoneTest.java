@@ -45,10 +45,10 @@ public class PhoneTest {
     public void equals() {
         Phone phone = new Phone("999");
 
-        // same values -> returns true
+        // same values -> ok
         assertTrue(phone.equals(new Phone("999")));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(phone.equals(phone));
 
         // null -> returns false

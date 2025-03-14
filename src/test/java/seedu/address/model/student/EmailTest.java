@@ -73,10 +73,10 @@ public class EmailTest {
     public void equals() {
         Email email = new Email("valid@email");
 
-        // same values -> returns true
+        // same values -> ok
         assertTrue(email.equals(new Email("valid@email")));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(email.equals(email));
 
         // null -> returns false

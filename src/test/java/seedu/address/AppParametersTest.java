@@ -50,10 +50,10 @@ public class AppParametersTest {
     public void equals() {
         AppParameters appParameters = new AppParameters();
 
-        // same values -> returns true
+        // same values -> ok
         assertTrue(appParameters.equals(new AppParameters()));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(appParameters.equals(appParameters));
 
         // null -> returns false

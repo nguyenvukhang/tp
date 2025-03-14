@@ -48,10 +48,10 @@ public class FindCommandTest {
         // different types -> fail
         assertNotEquals(findFirstCommand, 1);
 
-        // null -> returns false
+        // null -> fail
         assertNotNull(findFirstCommand);
 
-        // different student -> returns false
+        // different student -> fail
         assertNotEquals(findFirstCommand, findSecondCommand);
     }
 

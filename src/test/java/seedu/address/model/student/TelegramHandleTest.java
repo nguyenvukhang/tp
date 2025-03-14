@@ -45,10 +45,10 @@ public class TelegramHandleTest {
     public void equals() {
         TelegramHandle handle = new TelegramHandle("@valid_telegram_handle");
 
-        // same values -> returns true
+        // same values -> ok
         assertTrue(handle.equals(new TelegramHandle("@valid_telegram_handle")));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(handle.equals(handle));
 
         // null -> returns false

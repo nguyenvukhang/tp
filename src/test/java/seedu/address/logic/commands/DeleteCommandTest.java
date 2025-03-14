@@ -84,20 +84,20 @@ public class DeleteCommandTest {
         DeleteCommand deleteFirstCommand = new DeleteCommand(INDEX_FIRST_PERSON);
         DeleteCommand deleteSecondCommand = new DeleteCommand(INDEX_SECOND_PERSON);
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(deleteFirstCommand.equals(deleteFirstCommand));
 
-        // same values -> returns true
+        // same values -> ok
         DeleteCommand deleteFirstCommandCopy = new DeleteCommand(INDEX_FIRST_PERSON);
         assertTrue(deleteFirstCommand.equals(deleteFirstCommandCopy));
 
-        // different types -> returns false
+        // different types -> fail
         assertFalse(deleteFirstCommand.equals(1));
 
-        // null -> returns false
+        // null -> fail
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different student -> returns false
+        // different student -> fail
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 

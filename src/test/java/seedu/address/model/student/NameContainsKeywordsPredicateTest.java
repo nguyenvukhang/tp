@@ -22,10 +22,10 @@ public class NameContainsKeywordsPredicateTest {
         NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
         NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(firstPredicate.equals(firstPredicate));
 
-        // same values -> returns true
+        // same values -> ok
         NameContainsKeywordsPredicate firstPredicateCopy = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 

@@ -45,10 +45,10 @@ public class NameTest {
     public void equals() {
         Name name = new Name("Valid Name");
 
-        // same values -> returns true
+        // same values -> ok
         assertTrue(name.equals(new Name("Valid Name")));
 
-        // same object -> returns true
+        // same object -> ok
         assertTrue(name.equals(name));
 
         // null -> returns false
