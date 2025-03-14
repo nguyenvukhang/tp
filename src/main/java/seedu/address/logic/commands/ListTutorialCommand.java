@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.NavigationMode;
 
 /**
- * Adds a person to the address book.
+ * to the address book.
  */
 public class ListTutorialCommand extends Command {
 

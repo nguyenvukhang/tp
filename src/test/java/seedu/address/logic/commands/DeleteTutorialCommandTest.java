@@ -11,11 +11,11 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.tutorial.Tutorial;
-import seedu.address.testutil.TypicalPersons;
+import seedu.address.testutil.TypicalStudents;
 
 public class DeleteTutorialCommandTest {
 
-    private static final Model modelStub = new ModelManager(TypicalPersons.getTypicalAddressBookInclTutorials(),
+    private static final Model modelStub = new ModelManager(TypicalStudents.getTypicalAddressBookInclTutorials(),
                     new UserPrefs());
 
     @Test

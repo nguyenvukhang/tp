@@ -21,7 +21,18 @@ public class JsonAdaptedTutorial {
         this.name = name;
     }
 
+    /**
+     * Converts this Jackson-friendly adapted tutorial object into the model's
+     * {@code Tutorial} object.
+     *
+     * @throws IllegalValueException
+     *             if there were any data constraints violated in the adapted
+     *             student.
+     */
     public Tutorial toModelType() throws IllegalValueException {
+        if (!Tutorial.isValidName(name)) {
+            throw new IllegalValueException("Tutorial name is not valid.");
+        } ;
         return new Tutorial(name);
     }
 }

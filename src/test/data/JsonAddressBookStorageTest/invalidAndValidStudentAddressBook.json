@@ -1,0 +1,15 @@
+{
+  "persons": [ {
+    "name": "Valid Person",
+    "studentId": "A0955648M",
+    "phone": "9482424",
+    "email": "hans@example.com",
+    "handle": "@valid_person"
+  }, {
+    "name": "Person With Invalid Phone Field",
+    "studentId": "A0374848R",
+    "phone": "948asdf2424",
+    "email": "hans@example.com",
+    "handle": "@invalid_person"
+  } ]
+}
