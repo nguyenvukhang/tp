@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
@@ -154,22 +154,22 @@ public class EditCommandTest {
         // same values -> ok
         EditStudentDescriptor copyDescriptor = new EditStudentDescriptor(DESC_AMY);
         EditCommand commandWithSameValues = new EditCommand(INDEX_FIRST_PERSON, copyDescriptor);
-        assertTrue(standardCommand.equals(commandWithSameValues));
+        assertEquals(standardCommand, commandWithSameValues);
 
         // same object -> ok
-        assertTrue(standardCommand.equals(standardCommand));
+        assertEquals(standardCommand, standardCommand);
 
         // null -> fail
-        assertFalse(standardCommand.equals(null));
+        assertNotEquals(standardCommand, null);
 
         // different types -> fail
-        assertFalse(standardCommand.equals(new ClearCommand()));
+        assertNotEquals(standardCommand, new ClearCommand());
 
         // different index -> fail
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_SECOND_PERSON, DESC_AMY)));
+        assertNotEquals(standardCommand, new EditCommand(INDEX_SECOND_PERSON, DESC_AMY));
 
         // different descriptor -> fail
-        assertFalse(standardCommand.equals(new EditCommand(INDEX_FIRST_PERSON, DESC_BOB)));
+        assertNotEquals(standardCommand, new EditCommand(INDEX_FIRST_PERSON, DESC_BOB));
     }
 
     @Test
