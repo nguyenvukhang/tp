@@ -30,7 +30,7 @@ public class StudentTest {
         // same object -> ok
         assertTrue(ALICE.isSamePerson(ALICE));
 
-        // null -> returns false
+        // null -> fail
         assertFalse(ALICE.isSamePerson(null));
 
         // same name, all other attributes different -> ok
@@ -38,15 +38,15 @@ public class StudentTest {
                         .withHandle(VALID_HANDLE_BOB).withTutorials(VALID_TUTORIAL_2).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // different name, all other attributes same -> returns false
+        // different name, all other attributes same -> fail
         editedAlice = new StudentBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, all other attributes same -> returns false
+        // name differs in case, all other attributes same -> fail
         Student editedBob = new StudentBuilder(BOB).withName(VALID_NAME_BOB.toLowerCase()).build();
         assertFalse(BOB.isSamePerson(editedBob));
 
-        // name has trailing spaces, all other attributes same -> returns false
+        // name has trailing spaces, all other attributes same -> fail
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
         editedBob = new StudentBuilder(BOB).withName(nameWithTrailingSpaces).build();
         assertFalse(BOB.isSamePerson(editedBob));
@@ -56,33 +56,33 @@ public class StudentTest {
     public void equals() {
         // same values -> ok
         Student aliceCopy = new StudentBuilder(ALICE).build();
-        assertTrue(ALICE.equals(aliceCopy));
+        assertEquals(ALICE, aliceCopy);
 
         // same object -> ok
-        assertTrue(ALICE.equals(ALICE));
+        assertEquals(ALICE, ALICE);
 
-        // null -> returns false
+        // null -> fail
         assertFalse(ALICE.equals(null));
 
-        // different type -> returns false
+        // different type -> fail
         assertFalse(ALICE.equals(5));
 
-        // different student -> returns false
+        // different student -> fail
         assertFalse(ALICE.equals(BOB));
 
-        // different name -> returns false
+        // different name -> fail
         Student editedAlice = new StudentBuilder(ALICE).withName(VALID_NAME_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different phone -> returns false
+        // different phone -> fail
         editedAlice = new StudentBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different email -> returns false
+        // different email -> fail
         editedAlice = new StudentBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
 
-        // different address -> returns false
+        // different address -> fail
         editedAlice = new StudentBuilder(ALICE).withHandle(VALID_HANDLE_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
     }

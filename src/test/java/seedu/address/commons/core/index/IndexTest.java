@@ -50,13 +50,13 @@ public class IndexTest {
         // same object -> ok
         assertTrue(fifthPersonIndex.equals(fifthPersonIndex));
 
-        // null -> returns false
+        // null -> fail
         assertFalse(fifthPersonIndex.equals(null));
 
-        // different types -> returns false
+        // different types -> fail
         assertFalse(fifthPersonIndex.equals(5.0f));
 
-        // different index -> returns false
+        // different index -> fail
         assertFalse(fifthPersonIndex.equals(Index.fromOneBased(1)));
     }
 

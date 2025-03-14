@@ -23,19 +23,19 @@ public class NameContainsKeywordsPredicateTest {
         NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> ok
-        assertTrue(firstPredicate.equals(firstPredicate));
+        assertEquals(firstPredicate, firstPredicate);
 
         // same values -> ok
         NameContainsKeywordsPredicate firstPredicateCopy = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
-        assertTrue(firstPredicate.equals(firstPredicateCopy));
+        assertEquals(firstPredicate, firstPredicateCopy);
 
-        // different types -> returns false
+        // different types -> fail
         assertFalse(firstPredicate.equals(1));
 
-        // null -> returns false
+        // null -> fail
         assertFalse(firstPredicate.equals(null));
 
-        // different student -> returns false
+        // different student -> fail
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 

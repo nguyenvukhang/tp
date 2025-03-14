@@ -107,21 +107,21 @@ public class ModelManagerTest {
         // same values -> ok
         modelManager = new ModelManager(addressBook, userPrefs);
         ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
-        assertTrue(modelManager.equals(modelManagerCopy));
+        assertEquals(modelManager, modelManagerCopy);
 
         // same object -> ok
-        assertTrue(modelManager.equals(modelManager));
+        assertEquals(modelManager, modelManager);
 
-        // null -> returns false
+        // null -> fail
         assertFalse(modelManager.equals(null));
 
-        // different types -> returns false
+        // different types -> fail
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
+        // different addressBook -> fail
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
 
-        // different filteredList -> returns false
+        // different filteredList -> fail
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredStudentList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
@@ -129,7 +129,7 @@ public class ModelManagerTest {
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredStudentList(PREDICATE_SHOW_ALL_PERSONS);
 
-        // different userPrefs -> returns false
+        // different userPrefs -> fail
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
