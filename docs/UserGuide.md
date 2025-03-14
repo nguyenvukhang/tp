@@ -154,6 +154,12 @@ Examples:
 
 - `tutorial delete cs2103-f15`
 
+### Listing all tutorials : `tutorial list`
+
+Shows a list of all tutorials in the address book.
+
+Format: `tutorial list`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
