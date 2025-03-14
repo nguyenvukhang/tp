@@ -2,8 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalStudents.ALICE;
 
@@ -63,21 +63,21 @@ public class AddCommandTest {
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
-        // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        // same object -> ok
+        assertEquals(addAliceCommand, addAliceCommand);
 
-        // same values -> returns true
+        // same values -> ok
         AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        assertEquals(addAliceCommand, addAliceCommandCopy);
 
-        // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        // different types -> fail
+        assertNotEquals(addAliceCommand, 1);
 
-        // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        // null -> fail
+        assertNotNull(addAliceCommand);
 
-        // different student -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        // different student -> fail
+        assertNotEquals(addAliceCommand, addBobCommand);
     }
 
     @Test
