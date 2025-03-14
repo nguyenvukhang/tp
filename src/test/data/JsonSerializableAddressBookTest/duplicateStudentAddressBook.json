@@ -1,0 +1,16 @@
+{
+  "students": [ {
+    "name": "Alice Pauline",
+    "id": "A0123456Z",
+    "phone": "94351253",
+    "email": "alice@example.com",
+    "handle": "@alice",
+    "tags": [ "friends" ]
+  }, {
+    "name": "Alice Pauline",
+    "id": "A0123456Z",
+    "phone": "94351253",
+    "email": "pauline@example.com",
+    "handle": "@pauline"
+  } ]
+}
