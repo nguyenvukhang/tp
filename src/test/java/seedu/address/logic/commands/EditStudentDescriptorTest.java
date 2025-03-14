@@ -1,8 +1,8 @@
 package seedu.address.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
@@ -20,41 +20,41 @@ public class EditStudentDescriptorTest {
 
     @Test
     public void equals() {
-        // same values -> returns true
+        // same values -> ok
         EditStudentDescriptor descriptorWithSameValues = new EditStudentDescriptor(DESC_AMY);
-        assertTrue(DESC_AMY.equals(descriptorWithSameValues));
+        assertEquals(DESC_AMY, descriptorWithSameValues);
 
-        // same object -> returns true
-        assertTrue(DESC_AMY.equals(DESC_AMY));
+        // same object -> ok
+        assertEquals(DESC_AMY, DESC_AMY);
 
-        // null -> returns false
-        assertFalse(DESC_AMY.equals(null));
+        // null -> fail
+        assertNotNull(DESC_AMY);
 
-        // different types -> returns false
-        assertFalse(DESC_AMY.equals(5));
+        // different types -> fail
+        assertNotEquals(DESC_AMY, 5);
 
-        // different values -> returns false
-        assertFalse(DESC_AMY.equals(DESC_BOB));
+        // different values -> fail
+        assertNotEquals(DESC_AMY, DESC_BOB);
 
-        // different name -> returns false
+        // different name -> fail
         EditStudentDescriptor editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        assertNotEquals(DESC_AMY, editedAmy);
 
-        // different student id -> returns false
+        // different student id -> fail
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withStudentId(VALID_ID_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        assertNotEquals(DESC_AMY, editedAmy);
 
-        // different phone -> returns false
+        // different phone -> fail
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        assertNotEquals(DESC_AMY, editedAmy);
 
-        // different email -> returns false
+        // different email -> fail
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        assertNotEquals(DESC_AMY, editedAmy);
 
-        // different handle -> returns false
+        // different handle -> fail
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withHandle(VALID_HANDLE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
+        assertNotEquals(DESC_AMY, editedAmy);
     }
 
     @Test
