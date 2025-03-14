@@ -35,6 +35,21 @@ public class StudentID {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof StudentID)) {
+            return false;
+        }
+
+        StudentID otherStudentId = (StudentID) other;
+        return id.equals(otherStudentId.id);
+    }
+
+    @Override
     public String toString() {
         return id;
     }

@@ -1,8 +1,9 @@
 {
-  "persons": [ {
+  "students": [ {
     "name": "Hans Muster",
+    "id": "A0123456Z",
     "phone": "9482424",
     "email": "invalid@email!3e",
-    "address": "4th street"
+    "handle" : "@hans_muster"
   } ]
 }

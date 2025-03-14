@@ -103,7 +103,7 @@ public class JsonAdaptedStudentTest {
     }
 
     @Test
-    public void toModelType_invalidTags_throwsIllegalValueException() {
+    public void toModelType_invalidTutorials_throwsIllegalValueException() {
         List<JsonAdaptedTutorial> invalidTutorials = new ArrayList<>(VALID_TUTORIALS);
         invalidTutorials.add(new JsonAdaptedTutorial(INVALID_TUTORIAL));
         JsonAdaptedStudent student = new JsonAdaptedStudent(VALID_NAME, VALID_STUDENT_ID, VALID_PHONE, VALID_EMAIL,

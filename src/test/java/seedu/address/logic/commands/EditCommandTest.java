@@ -57,10 +57,10 @@ public class EditCommandTest {
 
         StudentBuilder studentInList = new StudentBuilder(lastStudent);
         Student editedStudent = studentInList.withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-                        .withTags(VALID_TUTORIAL_2).build();
+                        .withTutorials(VALID_TUTORIAL_2).build();
 
         EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_BOB)
-                        .withPhone(VALID_PHONE_BOB).withTags(VALID_TUTORIAL_2).build();
+                        .withPhone(VALID_PHONE_BOB).withTutorials(VALID_TUTORIAL_2).build();
         EditCommand editCommand = new EditCommand(indexLastStudent, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedStudent));

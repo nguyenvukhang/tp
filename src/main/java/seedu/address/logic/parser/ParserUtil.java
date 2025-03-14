@@ -142,7 +142,7 @@ public class ParserUtil {
     public static TelegramHandle parseTelegramHandle(String handle) throws ParseException {
         requireNonNull(handle);
         String trimmedHandle = handle.trim();
-        if (!StudentID.isValidID(trimmedHandle)) {
+        if (!TelegramHandle.isValidHandle(trimmedHandle)) {
             throw new ParseException(TelegramHandle.MESSAGE_CONSTRAINTS);
         }
         return new TelegramHandle(trimmedHandle);

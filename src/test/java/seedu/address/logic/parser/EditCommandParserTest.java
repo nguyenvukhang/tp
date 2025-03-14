@@ -77,7 +77,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 r/ string", MESSAGE_INVALID_FORMAT);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS); // invalid phone
         assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Email.MESSAGE_CONSTRAINTS); // invalid email
         assertParseFailure(parser, "1" + INVALID_HANDLE_DESC, TelegramHandle.MESSAGE_CONSTRAINTS); // invalid address
-        assertParseFailure(parser, "1" + INVALID_TUTORIAL_DESC, "Tutorial name invalid."); // invalid tutorial
+        assertParseFailure(parser, "1" + INVALID_TUTORIAL_DESC, "Tutorial name is not valid."); // invalid tutorial
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
@@ -95,11 +95,11 @@ public class EditCommandParserTest {
         // Student} being edited,
         // parsing it together with a valid tag results in error
         assertParseFailure(parser, "1" + TUTORIAL_DESC_1 + TUTORIAL_DESC_2 + TUTORIAL_EMPTY,
-                        "Tutorial name is invalid.");
+                        "Tutorial name is not valid.");
         assertParseFailure(parser, "1" + TUTORIAL_DESC_1 + TUTORIAL_EMPTY + TUTORIAL_DESC_2,
-                        "Tutorial name is invalid.");
+                        "Tutorial name is not valid.");
         assertParseFailure(parser, "1" + TUTORIAL_EMPTY + TUTORIAL_DESC_1 + TUTORIAL_DESC_2,
-                        "Tutorial name is invalid.");
+                        "Tutorial name is not valid.");
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_HANDLE_AMY + VALID_PHONE_AMY,
@@ -114,7 +114,7 @@ public class EditCommandParserTest {
 
         EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withName(VALID_NAME_AMY)
                         .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withHandle(VALID_HANDLE_AMY)
-                        .withTags(VALID_TUTORIAL_2, VALID_TUTORIAL_1).build();
+                        .withTutorials(VALID_TUTORIAL_2, VALID_TUTORIAL_1).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -161,7 +161,7 @@ public class EditCommandParserTest {
 
         // tags
         userInput = targetIndex.getOneBased() + TUTORIAL_DESC_1;
-        descriptor = new EditStudentDescriptorBuilder().withTags(VALID_TUTORIAL_1).build();
+        descriptor = new EditStudentDescriptorBuilder().withTutorials(VALID_TUTORIAL_1).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
@@ -203,7 +203,7 @@ public class EditCommandParserTest {
         Index targetIndex = INDEX_THIRD_PERSON;
         String userInput = targetIndex.getOneBased() + TUTORIAL_EMPTY;
 
-        EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withTags().build();
+        EditStudentDescriptor descriptor = new EditStudentDescriptorBuilder().withTutorials().build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

@@ -63,11 +63,19 @@ public class StudentBuilder {
     }
 
     /**
-     * Parses the {@code tags} into a {@code Set<Tag>} and set it to the
+     * Sets the {@code StudentID} of the {@code Student} that we are building.
+     */
+    public StudentBuilder withStudentId(String studentId) {
+        this.studentId = new StudentID(studentId);
+        return this;
+    }
+
+    /**
+     * Parses the {@code tutorials} into a {@code Set<Tutorial>} and set it to the
      * {@code Student} that we are building.
      */
-    public StudentBuilder withTags(String... tags) {
-        this.tutorials = SampleDataUtil.getTutorialSet(tags);
+    public StudentBuilder withTutorials(String... tutorials) {
+        this.tutorials = SampleDataUtil.getTutorialSet(tutorials);
         return this;
     }
 

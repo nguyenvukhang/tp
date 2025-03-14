@@ -1,14 +1,16 @@
 {
-  "persons": [ {
+  "students": [ {
     "name": "Alice Pauline",
+    "id": "A0123456Z",
     "phone": "94351253",
     "email": "alice@example.com",
-    "address": "123, Jurong West Ave 6, #08-111",
+    "handle": "@alice",
     "tags": [ "friends" ]
   }, {
     "name": "Alice Pauline",
+    "id": "A0123456Z",
     "phone": "94351253",
     "email": "pauline@example.com",
-    "address": "4th street"
+    "handle": "@pauline"
   } ]
 }

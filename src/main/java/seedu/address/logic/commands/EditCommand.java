@@ -229,12 +229,16 @@ public class EditCommand extends Command {
             }
 
             EditStudentDescriptor otherEditStudentDescriptor = (EditStudentDescriptor) other;
-            return Objects.equals(name, otherEditStudentDescriptor.name);
+            return Objects.equals(name, otherEditStudentDescriptor.name)
+                            && Objects.equals(studentId, otherEditStudentDescriptor.studentId)
+                            && Objects.equals(phone, otherEditStudentDescriptor.phone)
+                            && Objects.equals(email, otherEditStudentDescriptor.email)
+                            && Objects.equals(handle, otherEditStudentDescriptor.handle);
         }
 
         @Override
         public String toString() {
-            return new ToStringBuilder(this).add("name", name).add("studentID", studentId).add("phone", phone)
+            return new ToStringBuilder(this).add("name", name).add("studentId", studentId).add("phone", phone)
                             .add("email", email).add("handle", handle).add("tutorials", tutorials).toString();
         }
     }

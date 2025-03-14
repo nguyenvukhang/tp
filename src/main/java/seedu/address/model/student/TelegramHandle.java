@@ -35,6 +35,21 @@ public class TelegramHandle {
     }
 
     @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(other instanceof TelegramHandle)) {
+            return false;
+        }
+
+        TelegramHandle otherTelegramHandle = (TelegramHandle) other;
+        return handle.equals(otherTelegramHandle.handle);
+    }
+
+    @Override
     public String toString() {
         return handle;
     }

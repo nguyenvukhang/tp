@@ -91,7 +91,7 @@ public class EditStudentDescriptorBuilder {
      * Parses the {@code tutorials} into a {@code Set<Tutorial>} and set it to the
      * {@code EditStudentDescriptor} that we are building.
      */
-    public EditStudentDescriptorBuilder withTags(String... tutorials) {
+    public EditStudentDescriptorBuilder withTutorials(String... tutorials) {
         Set<Tutorial> tutorialSet = Stream.of(tutorials).map(Tutorial::new).collect(Collectors.toSet());
         descriptor.setTutorials(tutorialSet);
         return this;

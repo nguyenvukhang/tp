@@ -1,46 +1,61 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
-  "persons" : [ {
+  "students" : [ {
     "name" : "Alice Pauline",
+    "id": "A0743062E",
     "phone" : "94351253",
     "email" : "alice@example.com",
-    "address" : "123, Jurong West Ave 6, #08-111",
-    "tags" : [ "friends" ]
+    "handle" : "@alice_pauline",
+    "tutorials" : [ {
+      "name" : "CS2103-T1"
+    } ]
   }, {
     "name" : "Benson Meier",
+    "id": "A0179034R",
     "phone" : "98765432",
     "email" : "johnd@example.com",
-    "address" : "311, Clementi Ave 2, #02-25",
-    "tags" : [ "owesMoney", "friends" ]
+    "handle" : "@benson_meier",
+    "tutorials" : [ {
+      "name" : "CS2103-T2"
+    }, {
+      "name" : "CS2106-T45"
+    } ]
   }, {
     "name" : "Carl Kurz",
+    "id": "A0388094Q",
     "phone" : "95352563",
     "email" : "heinz@example.com",
-    "address" : "wall street",
-    "tags" : [ ]
+    "handle" : "@carl_kurz",
+    "tutorials" : [ ]
   }, {
     "name" : "Daniel Meier",
+    "id": "A0833488W",
     "phone" : "87652533",
     "email" : "cornelia@example.com",
-    "address" : "10th street",
-    "tags" : [ "friends" ]
+    "handle" : "@dannn_mayor",
+    "tutorials" : [ {
+      "name" : "CS2103-T1"
+    } ]
   }, {
     "name" : "Elle Meyer",
+    "id": "A0172925M",
     "phone" : "9482224",
     "email" : "werner@example.com",
-    "address" : "michegan ave",
-    "tags" : [ ]
+    "handle" : "@ellem",
+    "tutorials" : [ ]
   }, {
     "name" : "Fiona Kunz",
+    "id": "A0005984F",
     "phone" : "9482427",
     "email" : "lydia@example.com",
-    "address" : "little tokyo",
-    "tags" : [ ]
+    "handle" : "@kunz_fiona",
+    "tutorials" : [ ]
   }, {
     "name" : "George Best",
+    "id": "A0443446N",
     "phone" : "9482442",
     "email" : "anna@example.com",
-    "address" : "4th street",
-    "tags" : [ ]
+    "handle" : "@the_best_george",
+    "tutorials" : [ ]
   } ]
 }

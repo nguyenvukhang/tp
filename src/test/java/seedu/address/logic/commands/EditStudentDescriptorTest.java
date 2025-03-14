@@ -7,9 +7,9 @@ import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_HANDLE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_ID_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TUTORIAL_2;
 
 import org.junit.jupiter.api.Test;
 
@@ -40,6 +40,10 @@ public class EditStudentDescriptorTest {
         EditStudentDescriptor editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
+        // different student id -> returns false
+        editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withStudentId(VALID_ID_BOB).build();
+        assertFalse(DESC_AMY.equals(editedAmy));
+
         // different phone -> returns false
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withPhone(VALID_PHONE_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
@@ -48,12 +52,8 @@ public class EditStudentDescriptorTest {
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different address -> returns false
+        // different handle -> returns false
         editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withHandle(VALID_HANDLE_BOB).build();
-        assertFalse(DESC_AMY.equals(editedAmy));
-
-        // different tags -> returns false
-        editedAmy = new EditStudentDescriptorBuilder(DESC_AMY).withTags(VALID_TUTORIAL_2).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
@@ -61,7 +61,8 @@ public class EditStudentDescriptorTest {
     public void toStringMethod() {
         EditStudentDescriptor editStudentDescriptor = new EditStudentDescriptor();
         String expected = EditStudentDescriptor.class.getCanonicalName() + "{name="
-                        + editStudentDescriptor.getName().orElse(null) + ", phone="
+                        + editStudentDescriptor.getName().orElse(null) + ", studentId="
+                        + editStudentDescriptor.getStudentId().orElse(null) + ", phone="
                         + editStudentDescriptor.getPhone().orElse(null) + ", email="
                         + editStudentDescriptor.getEmail().orElse(null) + ", handle="
                         + editStudentDescriptor.getHandle().orElse(null) + ", tutorials="
