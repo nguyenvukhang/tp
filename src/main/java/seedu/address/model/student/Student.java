@@ -68,6 +68,13 @@ public class Student {
     }
 
     /**
+     * Updates the tutorial set
+     */
+    public void setTutorials(Set<Tutorial> tutorials) {
+        this.tutorials = tutorials;
+    }
+
+    /**
      * Returns true if both students have the same name. This defines a weaker
      * notion of equality between two students.
      */
@@ -77,6 +84,13 @@ public class Student {
         }
 
         return otherStudent != null && otherStudent.getName().equals(getName());
+    }
+
+    /**
+     * Returns a clone of the current student.
+     */
+    public Student clone() {
+        return new Student(name, studentId, phone, email, handle, tutorials);
     }
 
     /**
