@@ -142,6 +142,18 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Deleting a tutorial: `tutorial delete`
+
+Deletes a tutorial slot from the address book.
+
+Format: `tutorial delete NAME`
+
+- `NAME` can contain only: alphanumeric characters, underscore and hyphen.
+
+Examples:
+
+- `tutorial delete cs2103-f15`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
