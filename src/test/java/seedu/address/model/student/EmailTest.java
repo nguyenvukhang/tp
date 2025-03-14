@@ -2,6 +2,8 @@ package seedu.address.model.student;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -81,12 +83,12 @@ public class EmailTest {
         assertEquals(email, email);
 
         // null -> fail
-        assertFalse(email.equals(null));
+        assertNotNull(email);
 
         // different types -> fail
-        assertFalse(email.equals(5.0f));
+        assertNotEquals(email, 5.0f);
 
         // different values -> fail
-        assertFalse(email.equals(new Email("other.valid@email")));
+        assertNotEquals(email, new Email("other.valid@email"));
     }
 }

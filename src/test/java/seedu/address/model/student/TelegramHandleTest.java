@@ -2,6 +2,8 @@ package seedu.address.model.student;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -53,12 +55,12 @@ public class TelegramHandleTest {
         assertTrue(handle.equals(handle));
 
         // null -> fail
-        assertFalse(handle.equals(null));
+        assertNotNull(handle);
 
         // different types -> fail
-        assertFalse(handle.equals(5.0f));
+        assertNotEquals(handle, 5.0f);
 
         // different values -> fail
-        assertFalse(handle.equals(new TelegramHandle("@other_valid_telegram_handle")));
+        assertNotEquals(handle, new TelegramHandle("@other_valid_telegram_handle"));
     }
 }
