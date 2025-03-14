@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddStudentToTutorialCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -49,13 +50,16 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        // Note to developers: Change the log level in config.json to enable lower level
-        // (i.e., FINE, FINER and lower)
-        // log messages such as the one below.
-        // Lower level log messages are used sparingly to minimize noise in the code.
+        // Note to developers: Change the log level in config.json to enable lower
+        // level (i.e., FINE, FINER and lower) log messages such as the one below.
+        // Lower level log messages are used sparingly to minimize noise in the
+        // code.
         logger.fine("Command word: " + commandWord + "; Arguments: " + arguments);
 
         switch (commandWord) {
+        case AddStudentToTutorialCommand.COMMAND_WORD:
+            return new AddStudentToTutorialParser().parse(arguments);
+
         case TutorialCommand.COMMAND_WORD:
             return new TutorialParser().parse(arguments);
 
@@ -88,5 +92,4 @@ public class AddressBookParser {
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }
-
 }

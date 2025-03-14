@@ -5,3 +5,6 @@ fmt:
 
 test:
 	$(GRADLE) test
+
+run:
+	$(GRADLE) run

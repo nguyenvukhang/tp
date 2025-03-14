@@ -21,9 +21,9 @@ import seedu.address.model.tutorial.Tutorial;
  */
 public class AddStudentToTutorialCommand extends Command {
 
-    public static final String COMMAND_WORD = "add";
+    public static final String COMMAND_WORD = "student_tutorial";
 
-    public static final String MESSAGE_USAGE = "Usage: student_tutorial add TUTORIAL_NAME STUDENT_INDEX";
+    public static final String MESSAGE_USAGE = "Usage: student_tutorial TUTORIAL_NAME STUDENT_INDEX";
 
     public static final String MESSAGE_SUCCESS = "Student added to tutorial: %1$s";
     public static final String MESSAGE_INVALID_NAME = """
